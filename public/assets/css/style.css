@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root,
+.light,
+.light-theme {
+  --blue-1: #ebedef;
+  --blue-2: #e2e8f0;
+  --blue-3: #d3e1f0;
+  --blue-4: #c0daf5;
+  --blue-5: #aad0f7;
+  --blue-6: #91c2f3;
+  --blue-7: #71b0ef;
+  --blue-8: #3a97ec;
+  --blue-9: #4da9ff;
+  --blue-10: #409df2;
+  --blue-11: #0060b1;
+  --blue-12: #00336e;
+
+  --blue-a1: #1c71c606;
+  --blue-a2: #0369f10f;
+  --blue-a3: #0275f11f;
+  --blue-a4: #60aeff55;
+  --blue-a5: #5aacff77;
+  --blue-a6: #000aff33;
+  --blue-a7: #0077ee87;
+  --blue-a8: #017cebc2;
+  --blue-a9: #4da9ff;
+  --blue-a10: #0000ff22;
+  --blue-a11: #0060b1;
+  --blue-a12: #00336e;
+
+  --blue-contrast: #fff;
+  --blue-surface: #dfe6f0cc;
+  --blue-indicator: #4da9ff;
+  --blue-track: #4da9ff;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root,
+    .light,
+    .light-theme {
+      --blue-1: oklch(94.5% 0.004 249.5);
+      --blue-2: oklch(92.9% 0.012 249.5);
+      --blue-3: oklch(90.4% 0.025 249.5);
+      --blue-4: oklch(87.8% 0.0468 249.5);
+      --blue-5: oklch(84.3% 0.0677 249.5);
+      --blue-6: oklch(79.7% 0.0872 249.5);
+      --blue-7: oklch(73.9% 0.1121 249.5);
+      --blue-8: oklch(66.2% 0.1532 249.5);
+      --blue-9: oklch(71.8% 0.1532 249.5);
+      --blue-10: oklch(68.1% 0.1532 249.5);
+      --blue-11: oklch(48.5% 0.1532 249.5);
+      --blue-12: oklch(32.3% 0.1223 249.5);
+
+      --blue-a1: color(display-p3 0.0078 0.3843 0.7569 / 0.021);
+      --blue-a2: color(display-p3 0.0157 0.3725 0.8706 / 0.055);
+      --blue-a3: color(display-p3 0.0078 0.4039 0.8706 / 0.109);
+      --blue-a4: color(display-p3 0 0.2706 1 / 0.134);
+      --blue-a5: color(display-p3 0 0.2941 1 / 0.2);
+      --blue-a6: color(display-p3 0.0039 0.4235 0.9333 / 0.355);
+      --blue-a7: color(display-p3 0.0039 0.3922 0.8941 / 0.471);
+      --blue-a8: color(display-p3 0 0.3922 0.8745 / 0.65);
+      --blue-a9: color(display-p3 0 0.4078 1 / 0.534);
+      --blue-a10: color(display-p3 0 0.4078 0.9098 / 0.625);
+      --blue-a11: color(display-p3 0 0.2549 0.6157 / 0.834);
+      --blue-a12: color(display-p3 0 0.1373 0.3725 / 0.925);
+
+      --blue-contrast: #fff;
+      --blue-surface: color(display-p3 0.8784 0.902 0.9373 / 0.8);
+      --blue-indicator: oklch(71.8% 0.1532 249.5);
+      --blue-track: oklch(71.8% 0.1532 249.5);
+    }
+  }
+}
+
+:root,
+.light,
+.light-theme {
+  --gray-1: #ececec;
+  --gray-2: #e7e7e7;
+  --gray-3: #ddd;
+  --gray-4: #d4d4d4;
+  --gray-5: #ccc;
+  --gray-6: #c3c3c3;
+  --gray-7: #b8b8b8;
+  --gray-8: #a4a4a4;
+  --gray-9: #777;
+  --gray-10: #6d6d6d;
+  --gray-11: #505050;
+  --gray-12: #202020;
+
+  --gray-a1: #00000004;
+  --gray-a2: #0000000a;
+  --gray-a3: #00000014;
+  --gray-a4: #0000001e;
+  --gray-a5: #00000026;
+  --gray-a6: #00000030;
+  --gray-a7: #0000003c;
+  --gray-a8: #00000051;
+  --gray-a9: #00000081;
+  --gray-a10: #0000008b;
+  --gray-a11: #000000aa;
+  --gray-a12: #000000dd;
+
+  --gray-contrast: #ffffff;
+  --gray-surface: #ffffffcc;
+  --gray-indicator: #777;
+  --gray-track: #777;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root,
+    .light,
+    .light-theme {
+      --gray-1: oklch(94.2% 0 none);
+      --gray-2: oklch(92.9% 0 none);
+      --gray-3: oklch(89.8% 0 none);
+      --gray-4: oklch(87% 0 none);
+      --gray-5: oklch(84.5% 0 none);
+      --gray-6: oklch(81.7% 0 none);
+      --gray-7: oklch(78.1% 0 none);
+      --gray-8: oklch(71.9% 0 none);
+      --gray-9: oklch(56.9% 0 none);
+      --gray-10: oklch(53.4% 0 none);
+      --gray-11: oklch(43.3% 0 none);
+      --gray-12: oklch(24.3% 0 none);
+
+      --gray-a1: color(display-p3 0 0 0 / 0.0167);
+      --gray-a2: color(display-p3 0 0 0 / 0.0375);
+      --gray-a3: color(display-p3 0 0 0 / 0.0792);
+      --gray-a4: color(display-p3 0 0 0 / 0.1167);
+      --gray-a5: color(display-p3 0 0 0 / 0.15);
+      --gray-a6: color(display-p3 0 0 0 / 0.1875);
+      --gray-a7: color(display-p3 0 0 0 / 0.2333);
+      --gray-a8: color(display-p3 0 0 0 / 0.3167);
+      --gray-a9: color(display-p3 0 0 0 / 0.5042);
+      --gray-a10: color(display-p3 0 0 0 / 0.5458);
+      --gray-a11: color(display-p3 0 0 0 / 0.6667);
+      --gray-a12: color(display-p3 0 0 0 / 0.8667);
+
+      --gray-contrast: #ffffff;
+      --gray-surface: color(display-p3 1 1 1 / 80%);
+      --gray-indicator: oklch(56.9% 0 none);
+      --gray-track: oklch(56.9% 0 none);
+    }
+  }
+}
+
+:root,
+.light,
+.light-theme,
+.radix-themes {
+  --color-background: #f0f0f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #fff;
+  height: 100vh;
+}
+
+.login-bg {
+  position: absolute;
+  z-index: -1;
+}
+
+.login-bg img {
+  height: 100vh;
+}
+
+.invento-container {
+  width: fit-content;
+  position: absolute;
+  left: 10%;
+  top: 43%;
+  transform: translateY(-50%);
+}
+
+.invento-container h1 {
+  font-size: 5.5rem;
+  color: var(--blue-1);
+}
+
+.invento-container p {
+  color: var(--blue-5);
+}
+
+.login-container {
+  position: absolute;
+  right: 10%;
+  top: 37%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+  align-items: center;
+}
+
+.login-container img {
+  width: 200px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.inp-sec {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inp-sec input {
+  padding: 12px 16px;
+  padding-left: 36px;
+  width: 100%;
+  border: 2px solid rgba(187, 187, 187, 0.46);
+  border-radius: 4px;
+  outline: 0;
+  color: var(--blue-11);
+  transition: all 0.2s;
+}
+
+.inp-sec label {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  font-size: 1.2rem;
+  color: rgba(187, 187, 187, 0.76);
+  transition: all 0.2s;
+}
+
+.inp-sec input::placeholder {
+  color: rgba(187, 187, 187);
+}
+
+.inp-sec input:not(:placeholder-shown) {
+  border-color: var(--blue-7);
+}
+
+.inp-sec input:focus {
+  border-color: var(--blue-7);
+}
+
+.inp-sec input:not(:placeholder-shown) ~ label {
+  color: var(--blue-7);
+}
+
+.inp-sec input:focus ~ label {
+  color: var(--blue-7);
+}
+
+.inp-sec button[type="submit"] {
+  background: var(--blue-11);
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.inp-sec button[type="submit"]:hover {
+  background: var(--blue-10);
+}
+
+a {
+  text-decoration: none;
+  color: var(--blue-7);
+}
+
+a:hover {
+  text-decoration: underline;
+}

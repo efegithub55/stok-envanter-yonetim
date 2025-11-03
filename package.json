@@ -1,0 +1,20 @@
+{
+  "name": "invento-v1.0.0",
+  "version": "1.0.0",
+  "description": "Stok & Envanter Yönetim Sistemi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Efe",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "lucide": "^0.552.0",
+    "mysql2": "^3.15.3"
+  }
+}
