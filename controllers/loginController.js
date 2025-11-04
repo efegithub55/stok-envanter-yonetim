@@ -11,13 +11,16 @@ exports.getLogin = async (req, res) => {
 
 exports.postLogin = async (req, res) => {
   const { email, password } = req.body;
-  const auth = await checkPassword.check(email, password);
+  const { auth, user } = await checkPassword.check(email, password);
   if (auth) {
+    req.session.user = user;
+    console.log(req.session);
     res.redirect("/dashboard");
   } else {
     req.session.alert = {
       message: "E-posta veya şifre hatalı!",
       type: "warning",
     };
+    return res.redirect("/login");
   }
 };
