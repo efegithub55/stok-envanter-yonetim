@@ -6,7 +6,9 @@
     <%- include("../components/Sidebar", { active: "dashboard"}) %>
     <!-- Main -->
     <main id="dashboard-main">
-      <h2>Hoşgeldiniz, Ahmet Yılmaz.</h2>
+      <h2>
+        Hoşgeldiniz, <%= user ? user.ad : "" %> <%= user ? user.soyad : "" %>.
+      </h2>
       <div class="dash-divider"></div>
       <div class="dashboard-flexbox">
         <div class="dashboard-item">

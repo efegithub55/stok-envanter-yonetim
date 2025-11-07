@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../../components/Head", { title: "Ürünler" }) %>
+  <body class="light" style="display: flex">
+    <!-- Sidebar -->
+    <%- include("../../components/Sidebar", { active: "urunler" }) %>
+    <!-- Main -->
+    <div id="dashboard-main">
+      <div class="products-header">
+        <div class="col">
+          <div class="row">
+            <h2>Ürünler</h2>
+            <div class="info-box primary">1,247</div>
+          </div>
+          <div class="row">
+            <p>Tüm ürünlerinizi yönetin, düzenleyin ve takip edin.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="product-actions">
+            <a class="btn" href=""
+              ><span class="bxr bx-filter"></span>Filtrele</a
+            >
+            <a class="btn" href=""
+              ><span class="bxr bx-arrow-in-down-square-half"></span>Excel
+              İndir</a
+            >
+            <a href="" class="btn btn-primary"
+              ><span class="bxr bx-plus"></span>Yeni Ürün Ekle</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="dash-divider"></div>
+      <div class="filter-section">
+        <div class="inp-sec">
+          <input
+            type="text"
+            placeholder="Ürün adı, barkod, SKU veya açıklama ara..."
+            name="productSearch"
+          />
+          <label for="productSearch"><span class="bxr bx-search"></span></label>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="filter-container">
+              <div class="filter-dropdown">
+                <div class="filter-dd-title">
+                  <span class="bxr bx-menu-filter"></span>Tüm kategoriler
+                  <span class="bxr bx-chevron-down"></span>
+                </div>
+                <!-- <div class="filter-dd-content">
+                        <div class="dd-item"></div>
+                    </div> -->
+              </div>
+              <div class="filter-dropdown">
+                <div class="filter-dd-title">
+                  <span class="bxr bx-chart-bar-columns"></span>Stok Durumu
+                  <span class="bxr bx-chevron-down"></span>
+                </div>
+                <!-- <div class="filter-dd-content">
+                        <div class="dd-item"></div>
+                    </div> -->
+              </div>
+              <div class="filter-dropdown">
+                <div class="filter-dd-title">
+                  <span class="bxr bx-chart-bar-columns"></span>Fiyat Aralığı
+                  <span class="bxr bx-chevron-down"></span>
+                </div>
+                <!-- <div class="filter-dd-content">
+                        <div class="dd-item"></div>
+                    </div> -->
+              </div>
+              <div class="filter-dropdown">
+                <div class="filter-dd-title">
+                  <span class="bxr bx-chart-bar-columns"></span>Sırala: En İyi
+                  <span class="bxr bx-chevron-down"></span>
+                </div>
+                <!-- <div class="filter-dd-content">
+                        <div class="dd-item"></div>
+                    </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="view-toggle">
+              <div class="view-toggle-btn active">
+                <span class="bxr bx-menu"></span>
+              </div>
+              <div class="view-toggle-btn">
+                <span class="bxr bx-table-cells-large"></span>
+              </div>
+              <div class="view-toggle-btn">
+                <span class="bxr bx-chart-bar-columns"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="table-section">
+        <table>
+          <thead>
+            <tr>
+              <th class="checkbox-cell"><input type="checkbox" /></th>
+              <th>Resim</th>
+              <th class="sortable">
+                <p>
+                  Ürün Bilgileri <span class="bxr bx-chevrons-up-down"></span>
+                </p>
+              </th>
+              <th class="sortable">
+                <p>Kategori <span class="bxr bx-chevrons-up-down"></span></p>
+              </th>
+              <th class="sortable">
+                <p>Stok <span class="bxr bx-chevrons-up-down"></span></p>
+              </th>
+              <th class="sortable">
+                <p>Birim Fiyat <span class="bxr bx-chevrons-up-down"></span></p>
+              </th>
+              <th class="sortable">
+                <p>
+                  Toplam Değer <span class="bxr bx-chevrons-up-down"></span>
+                </p>
+              </th>
+              <th>Durum</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="checkbox-cell"><input type="checkbox" /></td>
+              <td>
+                <div class="table-image">
+                  <img
+                    src="https://assets.getmobil.com/uploads/13464/getmobil-apple-iphone13promax-silver-00webp.png"
+                    alt=""
+                  />
+                </div>
+              </td>
+              <td>
+                <div class="col">
+                  <a href="">iPhone 13 Pro Max</a>
+                  <p>#BAR123456</p>
+                </div>
+              </td>
+              <td><div class="category-badge">Elektronik</div></td>
+              <td class="stock-cell">
+                <div class="col">
+                  <!-- normal, low, critical -->
+                  <div class="stock-amount normal">45</div>
+                  <div class="stock-min">Min: 50</div>
+                </div>
+              </td>
+              <td class="price-cell">
+                <p><span class="bxr bx-lira"></span>15,000</p>
+              </td>
+              <td class="price-cell">
+                <p><span class="bxr bx-lira"></span>675,000</p>
+              </td>
+              <td class="status-cell">
+                <div class="circle circle-success"></div>
+              </td>
+              <td class="actions-cell">
+                <button class="act-btn">
+                  <span class="bxr bxs-dots-vertical"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
