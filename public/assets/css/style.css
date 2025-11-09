@@ -1243,8 +1243,8 @@ td .col p {
   border-radius: 6px;
   font-size: 0.7rem;
   width: fit-content;
-  background: var(--blue-a5);
-  color: var(--blue-11);
+  background: var(--gray-a5);
+  color: var(--gray-11);
   font-weight: 600;
 }
 
