@@ -1745,3 +1745,45 @@ select:hover {
 .product-item:hover .quick-actions .pr-actions {
   display: flex;
 }
+
+.compact-view table tbody tr td {
+  padding: 6px;
+}
+
+.compact-view table thead tr th {
+  padding: 10px;
+}
+
+.compact-view td .col a {
+  font-size: 0.85rem;
+}
+
+.compact-view td .col p {
+  font-size: 0.65rem;
+}
+
+.compact-view .stock-cell .col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.compact-view th {
+  text-align: start;
+}
+
+.compact-view .price-cell p {
+  justify-content: start;
+}
+
+.compact-view .stock-cell .col {
+  color: var(--gray-12);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.compact-view .checkbox-cell {
+  text-align: start;
+  padding: 10px;
+}
