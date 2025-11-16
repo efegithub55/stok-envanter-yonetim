@@ -4,5 +4,6 @@ const productManagementController = require("../controllers/productManagementCon
 
 router.get("/urunler", productManagementController.getProducts);
 router.get("/yeni-urun", productManagementController.getAddProduct);
+router.get("/kategoriler", productManagementController.getCategories);
 
 module.exports = router;

@@ -25,3 +25,26 @@ document.addEventListener("DOMContentLoaded", () => {
     badge.style.color = color.text;
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const flexIcons = document.querySelectorAll(".flexbox-icon");
+  flexIcons.forEach((item) => {
+    var icon = item.dataset.icon;
+    var color = generateColorFromString(icon);
+
+    item.classList.add("bx-" + icon);
+    item.style.background = color.background;
+    item.style.color = color.text;
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const categoryBoxes = document.querySelectorAll(".category-box");
+
+  categoryBoxes.forEach((box) => {
+    const label = box.dataset.label;
+    const color = generateColorFromString(label);
+
+    box.style.setProperty("--before-color", color.text);
+  });
+});

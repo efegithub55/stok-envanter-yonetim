@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <%- include("../../components/Head", { title: "Kategoriler" }) %>
+  <body class="light" style="display: flex">
+    <!-- Sidebar -->
+    <%- include("../../components/Sidebar", { active: "kategoriler" }) %>
+    <!-- Main -->
+    <main id="dashboard-main">
+      <div class="products-header">
+        <div class="col">
+          <div class="row">
+            <h2>Kategoriler</h2>
+            <div class="info-box primary">8</div>
+          </div>
+          <div class="row">
+            <p>Ürün kategorilerinizi yönetin ve düzenleyin</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <a href="" class="btn btn-primary"
+              ><span class="bxr bx-plus"></span>Yeni Kategori Ekle</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="dash-divider"></div>
+      <div class="category-flexbox">
+        <div class="category-flex-item">
+          <div class="col">
+            <h4>214</h4>
+            <p>Toplam Kategori</p>
+          </div>
+          <div class="col">
+            <span class="bxr flexbox-icon" data-icon="folder"></span>
+          </div>
+        </div>
+        <div class="category-flex-item">
+          <div class="col">
+            <h4>1,247</h4>
+            <p>Toplam Ürün</p>
+          </div>
+          <div class="col">
+            <span class="bxr flexbox-icon" data-icon="package"></span>
+          </div>
+        </div>
+        <div class="category-flex-item">
+          <div class="col">
+            <h4>Elektronik</h4>
+            <p>En Popüler</p>
+          </div>
+          <div class="col">
+            <span class="bxr flexbox-icon" data-icon="star"></span>
+          </div>
+        </div>
+        <div class="category-flex-item">
+          <div class="col">
+            <h4>Sağlık & Kozmetik</h4>
+            <p>Son Eklenen</p>
+          </div>
+          <div class="col">
+            <span class="bxr flexbox-icon" data-icon="grid-circle-plus"></span>
+          </div>
+        </div>
+      </div>
+      <div class="category-grid">
+        <div class="category-box" data-label="Elektronik">
+          <div class="category-actions">
+            <a href="" class="action-btn"
+              ><span class="bxr bx-edit-alt"></span
+            ></a>
+            <a href="" class="action-btn delete"
+              ><span class="bxr bx-trash"></span
+            ></a>
+          </div>
+          <div class="row">
+            <h4 class="category-badge" data-label="Elektronik"></h4>
+            <p class="description">
+              Telefon, tablet, bilgisayar ve elektronik cihazlar
+            </p>
+          </div>
+          <div class="ctg-divider"></div>
+          <div class="row column">
+            <div class="col">
+              <p>Ürün Sayısı</p>
+              <div>437</div>
+            </div>
+            <div class="col">
+              <p>Toplam Değer</p>
+              <div>₺2.4M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Scripts -->
+    <script src="/assets/js/generateColorFromStr.js"></script>
+  </body>
+</html>
