@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <%- include("../../components/Head", { title: "Stok Durumu "}) %>
+  <body class="light" style="display: flex">
+    <!-- Sidebar -->
+    <%- include("../../components/Sidebar", { active: "stok-durumu" }) %>
+    <!-- Main -->
+    <main id="dashboard-main">
+      <div class="dash-header">
+        <div class="col">
+          <h2>Stok Durumu</h2>
+          <p>Tüm ürünlerinizin anlık stok seviyelerini görüntüleyin</p>
+        </div>
+        <div class="col flex-row">
+          <a href="" class="btn"
+            ><span class="bxr bx-arrow-in-down-square-half"></span>Rapor
+            İndir</a
+          >
+          <a href="" class="btn btn-primary"
+            ><span class="bxr bx-bolt"></span>Toplu Güncelle</a
+          >
+        </div>
+      </div>
+      <div class="dash-divider"></div>
+      <div class="warning-box">
+        <div class="col">
+          <div class="row">
+            <span class="bxr bxs-alert-triangle"></span>
+          </div>
+          <div class="row">
+            <strong>Kritik Stok Uyarısı!</strong>
+            <p>
+              23 ürün kritik stok seviyesinin altında. Acil tedarik gerekiyor.
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <a href="" class="btn btn-danger">Hemen Görüntüle</a>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card danger">
+          <div class="row">
+            <div class="col"><div class="status danger"></div></div>
+            <div class="col"><div class="stat-pin danger">Acil</div></div>
+          </div>
+          <div class="row">
+            <p>Kritik Stok</p>
+          </div>
+          <div class="row">
+            <h4>23</h4>
+          </div>
+          <div class="row">
+            <div class="trend-bar success">
+              <span class="bxr bx-arrow-up-stroke"></span>+5 bu hafta
+            </div>
+          </div>
+        </div>
+        <div class="stat-card warn">
+          <div class="row">
+            <div class="col"><div class="status warn"></div></div>
+            <div class="col"><div class="stat-pin warn">Dikkat</div></div>
+          </div>
+          <div class="row">
+            <p>Kritik Stok</p>
+          </div>
+          <div class="row">
+            <h4>74</h4>
+          </div>
+          <div class="row">
+            <div class="trend-bar danger">
+              <span class="bxr bx-arrow-up-stroke"></span>-12 bu hafta
+            </div>
+          </div>
+        </div>
+        <div class="stat-card success">
+          <div class="row">
+            <div class="col"><div class="status success"></div></div>
+            <div class="col"><div class="stat-pin success">Normal</div></div>
+          </div>
+          <div class="row">
+            <p>Düşük Stok</p>
+          </div>
+          <div class="row">
+            <h4>1,150</h4>
+          </div>
+          <div class="row">
+            <div class="trend-bar success">
+              <span class="bxr bx-arrow-up-stroke"></span>+28 bu hafta
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="row">
+            <div class="col"><span class="bxr bx-dollar-circle"></span></div>
+          </div>
+          <div class="row">
+            <p>Toplam Stok Değeri</p>
+          </div>
+          <div class="row">
+            <h4>₺2.4M</h4>
+          </div>
+          <div class="row">
+            <div class="trend-bar success">
+              <span class="bxr bx-arrow-up-stroke"></span>%8.5 bu hafta
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

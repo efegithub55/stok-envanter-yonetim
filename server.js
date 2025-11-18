@@ -8,6 +8,7 @@ const User = require("./models/User");
 const loginRouter = require("./routes/login");
 const dashboardRouter = require("./routes/dashboard");
 const productManagementRouter = require("./routes/product-management");
+const stockManagementRouter = require("./routes/stock-management");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -60,6 +61,7 @@ app.use(async (req, res, next) => {
 app.use("/login", loginRouter);
 app.use("/", dashboardRouter);
 app.use("/urun-yonetimi", productManagementRouter);
+app.use("/stok-islemleri", stockManagementRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("WEB | Aktif | " + process.env.PORT);
