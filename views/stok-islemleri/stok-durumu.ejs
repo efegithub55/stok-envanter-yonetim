@@ -110,21 +110,21 @@
       </div>
       <div class="category-tabs-container">
         <div class="ct-tab-buttons">
-          <div class="ct-tab-btn active">
+          <div class="ct-tab-btn active" data-target="1">
             <p>Tümü</p>
             <div class="ct-tab-pin">1,247</div>
           </div>
-          <div class="ct-tab-btn">
+          <div class="ct-tab-btn" data-target="2">
             <div class="circle circle-danger"></div>
             <p>Kritik</p>
             <div class="ct-tab-pin">23</div>
           </div>
-          <div class="ct-tab-btn">
+          <div class="ct-tab-btn" data-target="3">
             <div class="circle circle-warning"></div>
             <p>Düşük</p>
             <div class="ct-tab-pin">74</div>
           </div>
-          <div class="ct-tab-btn">
+          <div class="ct-tab-btn" data-target="4">
             <div class="circle circle-success"></div>
             <p>Yeterli</p>
             <div class="ct-tab-pin">1,150</div>
@@ -152,7 +152,190 @@
           </form>
         </div>
         <div class="dash-divider"></div>
-        <div class="product-container">
+        <div class="product-container" data-id="1">
+          <div class="product-box success">
+            <div class="row">
+              <div class="col">
+                <h4>Polo T-Shirt Premium</h4>
+                <p>Giyim • #BAR234567</p>
+              </div>
+              <div class="col">
+                <div class="stat-pin success">
+                  <div class="circle circle-success"></div>
+                  Yeterli
+                </div>
+              </div>
+            </div>
+            <div class="row flex-column">
+              <div class="row">
+                <div class="col">156 Adet</div>
+                <div class="col"><i>Min: 100</i></div>
+              </div>
+              <div class="row">
+                <div class="progress-bar">
+                  <div class="progress success" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="product-divider"></div>
+            <div class="row">
+              <div class="col">
+                <h5>Birim Fiyat</h5>
+                <h6>₺450</h6>
+              </div>
+              <div class="col w-100px">
+                <h5>Toplam Değer</h5>
+                <h6>₺70,200</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Son Giriş</h5>
+                <h6>1 Gün Önce</h6>
+              </div>
+              <div class="col w-100px">
+                <h5 data-label="Eksik">&nbsp;Miktar</h5>
+                <h6 class="success">+56 Adet</h6>
+              </div>
+            </div>
+            <div class="row">
+              <a href="" class="btn btn-primary"
+                ><span class="bxr bx-arrow-in-down-square-half"></span>Stok
+                Ekle</a
+              >
+              <a href="" class="btn btn-danger"
+                ><span class="bxr bx-arrow-out-up-square-half"></span>Stok
+                Çıkar</a
+              >
+              <a href="" class="btn"
+                ><span class="bxr bx-edit-alt"></span>Düzenle</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="product-container hidden" data-id="2">
+          <div class="product-box success">
+            <div class="row">
+              <div class="col">
+                <h4>asdasdas</h4>
+                <p>Giyim • #BAR234567</p>
+              </div>
+              <div class="col">
+                <div class="stat-pin success">
+                  <div class="circle circle-success"></div>
+                  Yeterli
+                </div>
+              </div>
+            </div>
+            <div class="row flex-column">
+              <div class="row">
+                <div class="col">156 Adet</div>
+                <div class="col"><i>Min: 100</i></div>
+              </div>
+              <div class="row">
+                <div class="progress-bar">
+                  <div class="progress success" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="product-divider"></div>
+            <div class="row">
+              <div class="col">
+                <h5>Birim Fiyat</h5>
+                <h6>₺450</h6>
+              </div>
+              <div class="col w-100px">
+                <h5>Toplam Değer</h5>
+                <h6>₺70,200</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Son Giriş</h5>
+                <h6>1 Gün Önce</h6>
+              </div>
+              <div class="col w-100px">
+                <h5 data-label="Eksik">&nbsp;Miktar</h5>
+                <h6 class="success">+56 Adet</h6>
+              </div>
+            </div>
+            <div class="row">
+              <a href="" class="btn btn-primary"
+                ><span class="bxr bx-arrow-in-down-square-half"></span>Stok
+                Ekle</a
+              >
+              <a href="" class="btn btn-danger"
+                ><span class="bxr bx-arrow-out-up-square-half"></span>Stok
+                Çıkar</a
+              >
+              <a href="" class="btn"
+                ><span class="bxr bx-edit-alt"></span>Düzenle</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="product-container hidden" data-id="3">
+          <div class="product-box success">
+            <div class="row">
+              <div class="col">
+                <h4>Polo T-Shirt Premium</h4>
+                <p>Giyim • #BAR234567</p>
+              </div>
+              <div class="col">
+                <div class="stat-pin success">
+                  <div class="circle circle-success"></div>
+                  Yeterli
+                </div>
+              </div>
+            </div>
+            <div class="row flex-column">
+              <div class="row">
+                <div class="col">156 Adet</div>
+                <div class="col"><i>Min: 100</i></div>
+              </div>
+              <div class="row">
+                <div class="progress-bar">
+                  <div class="progress success" style="width: 100%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="product-divider"></div>
+            <div class="row">
+              <div class="col">
+                <h5>Birim Fiyat</h5>
+                <h6>₺450</h6>
+              </div>
+              <div class="col w-100px">
+                <h5>Toplam Değer</h5>
+                <h6>₺70,200</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Son Giriş</h5>
+                <h6>1 Gün Önce</h6>
+              </div>
+              <div class="col w-100px">
+                <h5 data-label="Eksik">&nbsp;Miktar</h5>
+                <h6 class="success">+56 Adet</h6>
+              </div>
+            </div>
+            <div class="row">
+              <a href="" class="btn btn-primary"
+                ><span class="bxr bx-arrow-in-down-square-half"></span>Stok
+                Ekle</a
+              >
+              <a href="" class="btn btn-danger"
+                ><span class="bxr bx-arrow-out-up-square-half"></span>Stok
+                Çıkar</a
+              >
+              <a href="" class="btn"
+                ><span class="bxr bx-edit-alt"></span>Düzenle</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="product-container hidden" data-id="4">
           <div class="product-box success">
             <div class="row">
               <div class="col">
@@ -215,5 +398,7 @@
         </div>
       </div>
     </main>
+    <!-- Scripts -->
+    <script src="/assets/js/stockTabs.js"></script>
   </body>
 </html>
