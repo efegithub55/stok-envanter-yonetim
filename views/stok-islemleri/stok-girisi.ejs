@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <%- include("../../components/Head", { title: "Stok Girişi" }) %>
+  <body class="light" style="display: flex">
+    <!-- Sidebar -->
+    <%- include("../../components/Sidebar", { active: "stok-girisi"}) %>
+    <!-- Main -->
+    <main id="dashboard-main">
+      <div class="dash-header">
+        <div class="col">
+          <h2>Stok Girişi</h2>
+          <p>Depoya yeni ürün girişi kaydedin</p>
+        </div>
+        <div class="col flex-row">
+          <a href="" class="btn"
+            ><span class="bxr bx-clipboard-detail"></span>Son Girişler</a
+          >
+          <a href="" class="btn btn-primary"
+            ><span class="bxr bx-check"></span>Kaydet ve Onayla</a
+          >
+        </div>
+      </div>
+      <div class="dash-divider"></div>
+      <div class="info-section">
+        <div class="col">
+          <span class="bxr bx-light-bulb-alt"></span>
+        </div>
+        <div class="col">
+          <strong>Hızlı İpucu</strong>
+          <p>
+            Birden fazla ürün ekleyebilir ve tek seferde toplu giriş
+            yapabilirsiniz. İrsaliye numarası ve tedarikçi bilgilerini eklemeyi
+            unutmayın.
+          </p>
+        </div>
+      </div>
+      <div class="quick-add-section">
+        <div class="row">
+          <span class="bxr bx-plus"></span>
+          <p>Ürün Ekle</p>
+        </div>
+        <div class="row">
+          <div class="select-inp">
+            <input
+              type="text"
+              id="productSearch"
+              placeholder="Ürün adı, SKU veya barkod ara..."
+            />
+            <div class="search-dropdown hidden">
+              <ul>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="" class="btn btn-primary"
+            ><span class="bxr bx-plus"></span>Ekle</a
+          >
+        </div>
+      </div>
+      <div class="content-flexbox">
+        <div class="form-container flex-2">
+          <h3><span class="bxr bx-package"></span>Ürünler</h3>
+          <div class="form-divider"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>Mevcut Stok</th>
+                <th>Giriş Miktarı</th>
+                <th>Yeni Stok</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-container"></div>
+      </div>
+    </main>
+  </body>
+</html>

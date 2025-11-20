@@ -909,7 +909,7 @@ button.loading .spinner {
 }
 
 .flex-2 {
-  flex: 2;
+  flex: 2 !important;
 }
 
 .best-container {
@@ -2330,6 +2330,12 @@ select:hover {
   border: 1px solid #ff402372;
   border-left: 4px solid #ff4023;
   background: linear-gradient(90deg, #ff402319, #ffaa9d72);
+  border-radius: 10px;
+}
+
+.warning-box.primary {
+  border-color: var(--blue-10);
+  background: linear-gradient(90deg, #235aff19, #a29dff72) !important;
 }
 
 .warning-box .col {
@@ -2340,6 +2346,11 @@ select:hover {
 
 .warning-box span {
   color: #d51c00;
+  font-size: 1.8rem;
+}
+
+.warning-box.primary span {
+  color: var(--blue-10);
   font-size: 1.8rem;
 }
 
@@ -2677,4 +2688,209 @@ select:hover {
 
 h6.success {
   color: #10b981 !important;
+}
+
+.info-section {
+  width: 100%;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-left: 4px solid #0284c7;
+}
+
+.info-section .col span {
+  color: var(--blue-10);
+  font-size: 1.5rem;
+}
+
+.info-section strong {
+  color: var(--blue-12);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.info-section p {
+  color: var(--blue-a7);
+  font-size: 0.75rem;
+}
+
+.quick-add-section {
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--blue-a3);
+  border: 1px solid var(--blue-7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-add-section .row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+
+.quick-add-section .select-inp {
+  width: 100%;
+  position: relative;
+}
+
+.search-dropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-dropdown ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-dropdown ul li {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.search-dropdown ul li:hover {
+  background: var(--gray-1);
+}
+
+.search-dropdown ul li:not(:last-child) {
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.search-dropdown ul li img {
+  height: 32px;
+}
+
+.search-dropdown ul li h4 {
+  font-size: 0.85rem;
+  color: var(--gray-12);
+}
+
+.search-dropdown ul li p {
+  color: var(--gray-8) !important;
+  font-size: 0.75rem;
+}
+.quick-add-section .select-inp input {
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--gray-3);
+  outline: 0;
+  color: var(--blue-12);
+}
+
+.quick-add-section input:hover {
+  border-color: var(--blue-5);
+}
+
+.quick-add-section input:focus {
+  border-color: var(--blue-8);
+}
+
+.quick-add-section input:not(:placeholder-shown) {
+  border-color: var(--blue-8);
+}
+
+.quick-add-section .row {
+  display: flex;
+  align-items: center;
+}
+
+.quick-add-section .row > span {
+  font-size: 1.1rem;
+  color: var(--blue-12);
+}
+
+.quick-add-section .row p {
+  color: var(--blue-12);
+  font-weight: 500;
+}
+
+.content-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  flex: 1;
+  min-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fit-content {
+  width: fit-content;
+  height: fit-content;
+}
+
+.form-container table thead {
+  border-bottom: 1px solid var(--gray-5);
+}
+
+.form-container table thead th {
+  text-align: start;
+  color: var(--gray-10);
+  font-weight: 500;
+}
+
+.form-container table tbody td .table-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.form-container table tbody tr:not(:last-child) {
+  border-bottom: 1px solid var(--gray-2);
+}
+
+.table-info {
+  color: var(--gray-12);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.table-info p {
+  font-size: 0.75rem;
+  color: var(--gray-8);
+  font-weight: 400;
+}
+
+.form-container h3 {
+  color: var(--blue-12);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-container input {
+  padding: 6px 8px;
+  border: 1px solid var(--gray-2);
+  border-radius: 4px;
+  outline: 0;
+  width: 65px;
+  transition: all 0.1s ease;
+}
+
+.form-container input:focus {
+  border-color: var(--blue-10);
 }
