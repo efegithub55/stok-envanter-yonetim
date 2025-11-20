@@ -2535,6 +2535,16 @@ select:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 15px;
+  animation: container 0.4s ease;
+}
+
+@keyframes container {
+  0% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .product-box {
