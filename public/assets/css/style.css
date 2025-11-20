@@ -2656,5 +2656,15 @@ select:hover {
 
 .product-box .row .col h6 {
   color: var(--gray-11);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.product-box .row .col h5::before {
+  content: attr(data-label);
+}
+
+h6.success {
+  color: #10b981 !important;
 }
