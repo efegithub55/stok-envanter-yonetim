@@ -2828,13 +2828,14 @@ h6.success {
 
 .form-container {
   flex: 1;
-  min-width: 400px;
+  min-width: 450px;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid var(--gray-2);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  height: fit-content;
 }
 
 .fit-content {
@@ -2882,7 +2883,7 @@ h6.success {
   gap: 5px;
 }
 
-.form-container input {
+td input {
   padding: 6px 8px;
   border: 1px solid var(--gray-2);
   border-radius: 4px;
@@ -2893,4 +2894,62 @@ h6.success {
 
 .form-container input:focus {
   border-color: var(--blue-10);
+}
+
+.form-container table strong {
+  font-weight: 400;
+  color: var(--gray-12);
+  font-size: 0.95rem;
+}
+
+.content-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-container .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 6px;
+}
+
+.stat-container .row:not(:last-child) {
+  border-bottom: 1px solid var(--gray-1);
+}
+
+.stat-container .row h5 {
+  color: var(--gray-8);
+  font-weight: 400;
+}
+
+.stat-container .row p {
+  color: var(--gray-12);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.stat-container .row p.success {
+  color: #10b981;
+}
+
+.entry-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.entry-details .form-input {
+  width: 100%;
+}
+
+.entry-details input {
+  width: 100%;
 }
