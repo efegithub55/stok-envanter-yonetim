@@ -2939,6 +2939,10 @@ td input {
   color: #10b981;
 }
 
+.stat-container .row p.danger {
+  color: #ff4023;
+}
+
 .entry-details {
   width: 100%;
   display: flex;
@@ -2952,4 +2956,9 @@ td input {
 
 .entry-details input {
   width: 100%;
+}
+
+.form-container input[type="date"] {
+  border-color: var(--gray-2) !important;
+  cursor: pointer;
 }

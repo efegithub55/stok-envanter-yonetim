@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <%- include("../../components/Head", { title: "Stok Çıkışı" }) %>
+  <body class="light" style="display: flex">
+    <!-- Sidebar -->
+    <%- include("../../components/Sidebar", { active: "stok-cikisi"}) %>
+    <!-- Main -->
+    <main id="dashboard-main">
+      <div class="dash-header">
+        <div class="col">
+          <h2>Stok Çıkışı</h2>
+          <p>Depodan ürün çıkışı kaydedin</p>
+        </div>
+        <div class="col flex-row">
+          <a href="" class="btn"
+            ><span class="bxr bx-clipboard-detail"></span>Son Çıkışlar</a
+          >
+          <a href="" class="btn btn-primary"
+            ><span class="bxr bx-check"></span>Kaydet ve Onayla</a
+          >
+        </div>
+      </div>
+      <div class="dash-divider"></div>
+      <div class="warning-box">
+        <div class="col">
+          <div class="row">
+            <span class="bxr bxs-alert-triangle"></span>
+          </div>
+          <div class="row">
+            <strong>Dikkat!</strong>
+            <p>
+              Stok çıkışı yaptığınızda ürünlerin mevcut stok miktarları
+              azalacaktır. Yetersiz stok durumunda işlem gerçekleştirilemez.
+            </p>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="quick-add-section">
+        <div class="row">
+          <span class="bxr bx-plus"></span>
+          <p>Ürün Ekle</p>
+        </div>
+        <div class="row">
+          <div class="select-inp">
+            <input
+              type="text"
+              id="productSearch"
+              placeholder="Ürün adı, SKU veya barkod ara..."
+            />
+            <div class="search-dropdown hidden">
+              <ul>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="col">
+                    <img src="https://placehold.co/100x100" />
+                  </div>
+                  <div class="col">
+                    <h4>iPhone 13 Pro Max</h4>
+                    <p>Teknoloji • #BAR12345</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="" class="btn btn-primary"
+            ><span class="bxr bx-plus"></span>Ekle</a
+          >
+        </div>
+      </div>
+      <div class="content-flexbox">
+        <div class="form-container flex-2">
+          <h3><span class="bxr bx-package"></span>Ürünler</h3>
+          <div class="form-divider"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>Mevcut Stok</th>
+                <th>Çıkış Miktarı</th>
+                <th>Yeni Stok</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-info">
+                    <div class="row">iPhone 13 Pro Max</div>
+                    <div class="row"><p>#BAR12345</p></div>
+                  </div>
+                </td>
+                <td>3 adet</td>
+                <td>
+                  <input type="number" min="0" placeholder="0" />
+                </td>
+                <td><strong>53 adet</strong></td>
+                <td>
+                  <div class="btn btn-danger fit-content">
+                    <span class="bxr bx-trash"></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-container">
+          <h3><span class="bxr bx-chart-bar-columns"></span>Çıkış Özeti</h3>
+          <div class="form-divider"></div>
+          <div class="stat-container">
+            <div class="row">
+              <h5>Ürün Çeşidi</h5>
+              <p>3</p>
+            </div>
+            <div class="row">
+              <h5>Toplam Çıkış</h5>
+              <p>105 birim</p>
+            </div>
+            <div class="row">
+              <h5>Tahmini Değer</h5>
+              <p>₺1,119,000</p>
+            </div>
+            <div class="row">
+              <h5>Toplam Yeni Stok</h5>
+              <p class="danger">118 birim</p>
+            </div>
+          </div>
+          <div class="form-divider"></div>
+          <div class="entry-details">
+            <div class="form-input">
+              <label for="entry-date">Çıkış Tarihi</label>
+              <input type="date" name="entry-date" />
+            </div>
+            <div class="form-input">
+              <label for="suppler">Tedarikçi</label>
+              <select name="suppler" id="suppler">
+                <option selected disabled>Tedarikçi Seçin</option>
+              </select>
+            </div>
+            <div class="form-input">
+              <label for="waybill">İrsaliye/Fatura No</label>
+              <input
+                type="text"
+                name="waybill"
+                placeholder="Örn.: IRS-2025-001"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -4,5 +4,6 @@ const stockController = require("../controllers/stockManagementController");
 
 router.get("/stok-durumu", stockController.getStockStatus);
 router.get("/stok-girisi", stockController.getStockAdd);
+router.get("/stok-cikisi", stockController.getStockRemove);
 
 module.exports = router;
