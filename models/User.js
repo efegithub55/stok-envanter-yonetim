@@ -4,11 +4,15 @@ const bcrypt = require("bcrypt");
 class User {
   constructor(data) {
     this.id = data.id;
+    this.ad_soyad = data.ad_soyad;
     this.email = data.email;
-    this.password = data.password;
-    this.ad = data.ad;
-    this.soyad = data.soyad;
-    this.role_id = data.role_id;
+    this.sifre_hash = data.sifre_hash;
+    this.avatar_url = data.avatar_url;
+    this.telefon = data.telefon;
+    this.son_giris_tarihi = data.son_giris_tarihi;
+    this.olusturulma_tarihi = data.olusturulma_tarihi;
+    this.guncellenme_tarihi = data.guncellenme_tarihi;
+    this.role = data.role;
   }
 
   static async findByEmail(email) {

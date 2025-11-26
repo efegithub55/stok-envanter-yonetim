@@ -9,6 +9,6 @@ exports.check = async (email, password) => {
     return { auth: false, user: null };
   }
 
-  const auth = await bcrypt.compare(password, user.password);
+  const auth = await bcrypt.compare(password, user.sifre_hash);
   return { user, auth };
 };

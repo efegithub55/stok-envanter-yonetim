@@ -40,8 +40,8 @@
             <img src="https://placehold.co/100x100" >
         </div>
         <div class="col sb-act-toggle">
-            <h5><%= user.ad %> <%= user.soyad %></h5>
-            <p><%= user.role_id == 'staff' ? 'Personel' : user.role_id == 'admin' ? 'Yönetici' : 'Bilinmiyor' %></p>
+            <h5><%= user.ad_soyad %></h5>
+            <p><%= user.role == 'staff' ? 'Personel' : user.role == 'admin' ? 'Yönetici' : 'Bilinmiyor' %></p>
         </div>
     </div>
     <div class="user-profile-actions sb-act-toggle">
