@@ -32,6 +32,23 @@ class Product {
       throw err;
     }
   }
+
+  static async getTotalValue() {
+    try {
+      var total = 0;
+      const [rows] = await db.query(
+        "SELECT mevcut_stok, alis_fiyati FROM urunler"
+      );
+      rows.map((row) => {
+        var data = new Product(row);
+        total = data.alis_fiyati * data.mevcut_stok;
+      });
+      return total;
+    } catch (err) {
+      console.error("Product.getTotalValue hata:", err);
+      throw err;
+    }
+  }
 }
 
 module.exports = Product;
