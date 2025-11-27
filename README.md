@@ -58,7 +58,7 @@ Node.js + Express + EJS kullanılarak geliştirilmiş, ürün/stok takibi, kriti
 
 | Kritik Stok | Analiz Grafiği |
 |---|---|
-| ![Kritik Stok](screenshots/critical.png) | ![Analiz](screenshots/analytics.png) |
+| ![Stok Durumları](screenshots/stock.png) | ![Raporlar](screenshots/reports.png) |
 
 ## 🔧 Kurulum
 
@@ -142,4 +142,5 @@ Son vuruşlar. Gelecek planların ve güvenlik önlemlerin.
 ## 📄 Lisans
 
 Bu proje [MIT Lisansı](LICENSE) ile yayınlanmıştır.
+
 
