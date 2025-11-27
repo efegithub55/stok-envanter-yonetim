@@ -52,8 +52,6 @@ Node.js + Express + EJS kullanılarak geliştirilmiş, ürün/stok takibi, kriti
 
 ## 📸 Ekran Görüntüleri
 
-*(Screenshots klasörü oluşturup görüntüleri buraya linkleyebilirsin)*
-
 | Dashboard | Ürün Listesi |
 |---|---|
 | ![Dashboard](screenshots/dashboard.png) | ![Ürün Listesi](screenshots/products.png) |
@@ -144,3 +142,4 @@ Son vuruşlar. Gelecek planların ve güvenlik önlemlerin.
 ## 📄 Lisans
 
 Bu proje [MIT Lisansı](LICENSE) ile yayınlanmıştır.
+
