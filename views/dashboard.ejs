@@ -50,7 +50,7 @@
         </div>
         <div class="dashboard-item">
           <div class="col">
-            <h4>27</h4>
+            <h4><%= todayLogsLength %></h4>
             <p>Bugün Yapılan İşlem</p>
             <span class="stat-pin success">
               <span class="bxr bx-arrow-up"></span>
@@ -239,7 +239,76 @@
   </body>
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script src="/assets/js/charts/categoryChart.js"></script>
-  <script src="/assets/js/charts/15dChart.js"></script>
+  <script>
+    var series = <%- JSON.stringify(categoryStats.map(s => s.adet)) %>;
+    var labels = <%- JSON.stringify(categoryStats.map(s => s.kategori_adi)) %>;
+    var options = {
+      series: series,
+      labels: labels,
+      chart: {
+        type: "donut",
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
+    };
+
+    var chart = new ApexCharts(
+      document.querySelector("#categoryChart"),
+      options
+    );
+    chart.render();
+  </script>
+  <script>
+    const last15 = <%- JSON.stringify(last15Days) %>;
+
+    const data = last15.map(i => i.hareket_adedi);
+
+    // x-axis kategori: 27/11 gibi TR formatı
+    const categories = last15.map(i => {
+      const d = new Date(i.tarih);
+      return d.toLocaleDateString("tr-TR", {
+        day: "2-digit",
+        month: "2-digit"
+      });
+    });
+
+    var options = {
+      series: [
+        {
+          name: "Stok Hareketi",
+          data: data,
+        },
+      ],
+      chart: {
+        height: 350,
+        type: "bar",
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 6,
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: categories,
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#onbesChart"), options);
+    chart.render();
+  </script>
   <script src="/assets/js/generateColorFromStr.js"></script>
 </html>

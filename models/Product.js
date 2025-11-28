@@ -40,8 +40,7 @@ class Product {
         "SELECT mevcut_stok, alis_fiyati FROM urunler"
       );
       rows.map((row) => {
-        var data = new Product(row);
-        total = data.alis_fiyati * data.mevcut_stok;
+        total += row.alis_fiyati * row.mevcut_stok;
       });
       return total;
     } catch (err) {
