@@ -753,6 +753,7 @@ button.loading .spinner {
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
+  height: fit-content;
 }
 
 .grid-item h3 {
@@ -936,7 +937,7 @@ button.loading .spinner {
 }
 
 .best-container .row h5 {
-  min-width: 120px;
+  min-width: 150px;
   color: var(--gray-12);
 }
 

@@ -21,6 +21,29 @@ class Logs {
         const [rows] = await db.query(query);
         return rows.map((row) => new Logs(row));
       }
+
+      if (filter === "last5") {
+        let query = `
+        SELECT h.*, u.urun_adi AS urun_adi, k.ad_soyad AS ad_soyad FROM hareketler h JOIN urunler u ON h.urun_id = u.id JOIN users k ON h.yetkili_id = k.id ORDER BY created_at DESC LIMIT 5`;
+        const [rows] = await db.query(query);
+        return rows;
+      }
+
+      if (filter == "top6") {
+        let query = `
+        SELECT 
+          u.urun_adi,
+          SUM(ABS(h.miktar)) AS miktar
+          FROM hareketler h
+          JOIN urunler u ON h.urun_id = u.id
+          WHERE h.created_at >= CURDATE() - INTERVAL 1 MONTH
+          GROUP BY h.urun_id, u.urun_adi
+          ORDER BY miktar DESC
+          LIMIT 6;`;
+        const [rows] = await db.query(query);
+        return rows;
+      }
+
       var query = "SELECT * FROM hareketler";
       const [rows] = await db.query(query);
       return rows.map((row) => new Logs(row));
