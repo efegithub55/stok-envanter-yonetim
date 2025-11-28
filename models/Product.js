@@ -49,8 +49,14 @@ class Product {
     }
   }
 
-  static async getCritical() {
+  static async getCritical(filter) {
     try {
+      if (filter == "top5") {
+        const [rows] = await db.query(
+          "SELECT u.*, k.kategori_adi as urun_kategori FROM urunler u JOIN kategoriler k ON u.kategori_id = k.id WHERE u.mevcut_stok <= u.min_stok LIMIT 5"
+        );
+        return rows;
+      }
       const [rows] = await db.query(
         "SELECT * FROM urunler WHERE mevcut_stok <= min_stok"
       );

@@ -86,66 +86,25 @@
             <a href="">Tümünü gör <span class="bxr bx-arrow-right"></span></a>
           </h3>
           <div class="critical-container">
+            <% criticals.map((item) => { %>
             <div class="cr-item">
               <div class="row">
                 <div class="col">
-                  <div class="circle circle-danger"></div>
+                  <div
+                    class="circle circle-<%= item.mevcut_stok <= item.min_stok / 2 ? 'danger' : 'warning' %>"
+                  ></div>
                 </div>
                 <div class="col">
-                  <h4>iPhone 13</h4>
-                  <p>Elektronik</p>
+                  <h4><%= item.urun_adi %></h4>
+                  <p><%= item.urun_kategori %></p>
                 </div>
               </div>
-              <div class="col">3/50</div>
-            </div>
-            <div class="cr-item">
-              <div class="row">
-                <div class="col">
-                  <div class="circle circle-warning"></div>
-                </div>
-                <div class="col">
-                  <h4>Samsung TV</h4>
-                  <p>Elektronik</p>
-                </div>
+              <div class="col">
+                <%= item.mevcut_stok %>/<%= item.max_stok ? item.max_stok : '-'
+                %>
               </div>
-              <div class="col">8/30</div>
             </div>
-            <div class="cr-item">
-              <div class="row">
-                <div class="col">
-                  <div class="circle circle-danger"></div>
-                </div>
-                <div class="col">
-                  <h4>Nike Ayakkabı</h4>
-                  <p>Giyim</p>
-                </div>
-              </div>
-              <div class="col">2/25</div>
-            </div>
-            <div class="cr-item">
-              <div class="row">
-                <div class="col">
-                  <div class="circle circle-warning"></div>
-                </div>
-                <div class="col">
-                  <h4>Laptop HP</h4>
-                  <p>Elektronik</p>
-                </div>
-              </div>
-              <div class="col">12/40</div>
-            </div>
-            <div class="cr-item">
-              <div class="row">
-                <div class="col">
-                  <div class="circle circle-danger"></div>
-                </div>
-                <div class="col">
-                  <h4>Çanta XYZ</h4>
-                  <p>Aksesuar</p>
-                </div>
-              </div>
-              <div class="col">1/10</div>
-            </div>
+            <% }) %>
           </div>
         </div>
         <div class="grid-item">
@@ -157,48 +116,26 @@
           <div class="last-container">
             <div class="timeline-line"></div>
             <div class="last-list">
-              <div class="timeline-item stock-add">
-                <div class="timeline-time">14:32</div>
-                <div class="timeline-content">
-                  <h5><span class="bxr bx-arrow-up"></span>+50 | iPhone 13</h5>
-                  <p>Alper Kaya tarafından</p>
+              <% last5Logs.map((item) => { %>
+              <div
+                class="timeline-item stock-<%= item.hareket_turu == 'giris' ? 'add' : 'remove' %>"
+              >
+                <div class="timeline-time">
+                  <%= new Date(item.created_at) .toLocaleTimeString("tr-TR", {
+                  hour: "2-digit", minute: "2-digit" }); %>
                 </div>
-              </div>
-              <div class="timeline-item stock-remove">
-                <div class="timeline-time">13:15</div>
-                <div class="timeline-content">
-                  <h5>
-                    <span class="bxr bx-arrow-down"></span>-12 | Samsung
-                    Kulaklık
-                  </h5>
-                  <p>Satış - Ahmet Yılmaz</p>
-                </div>
-              </div>
-              <div class="timeline-item stock-add">
-                <div class="timeline-time">11:40</div>
                 <div class="timeline-content">
                   <h5>
-                    <span class="bxr bx-arrow-up"></span>+100 | Nike Ayakkabı
+                    <span
+                      class="bxr bx-arrow-<%= item.hareket_turu == 'giris' ? 'up' : 'down' %>"
+                    ></span
+                    ><%= item.hareket_turu == 'giris' ? '+' : '-' %><%=
+                    item.miktar %> | <%= item.urun_adi %>
                   </h5>
-                  <p>Tedarikçi X</p>
+                  <p><%= item.ad_soyad %> tarafından</p>
                 </div>
               </div>
-              <div class="timeline-item stock-remove">
-                <div class="timeline-time">10:05</div>
-                <div class="timeline-content">
-                  <h5>
-                    <span class="bxr bx-arrow-up"></span>-5 | Laptop Çantası
-                  </h5>
-                  <p>İade - Mehmet Demir</p>
-                </div>
-              </div>
-              <div class="timeline-item stock-add">
-                <div class="timeline-time">09:30</div>
-                <div class="timeline-content">
-                  <h5><span class="bxr bx-arrow-up"></span>+200 | T-Shirt</h5>
-                  <p>Toplu giriş</p>
-                </div>
-              </div>
+              <% }) %>
             </div>
           </div>
         </div>
@@ -208,30 +145,19 @@
             Bu Ay En Çok Hareket Eden Ürünler
           </h3>
           <div class="best-container">
+            <% if (topMovements && topMovements.length > 0) { %> <% const
+            maxMiktar = topMovements[0].miktar; %> <%
+            topMovements.forEach(function(item) { const percent =
+            Math.round((item.miktar / maxMiktar) * 100); %>
             <div class="row">
-              <h5>iPhone 13</h5>
-              <div class="best-bar" style="width: 100%">145</div>
+              <h5><%= item.urun_adi %></h5>
+              <div class="best-bar" style="width: <%= percent %>%">
+                <%= item.miktar %>
+              </div>
             </div>
-            <div class="row">
-              <h5>Samsung TV</h5>
-              <div class="best-bar" style="width: 68%">98</div>
-            </div>
-            <div class="row">
-              <h5>Nike Ayakkabı</h5>
-              <div class="best-bar" style="width: 52%">76</div>
-            </div>
-            <div class="row">
-              <h5>Laptop HP</h5>
-              <div class="best-bar" style="width: 45%">65</div>
-            </div>
-            <div class="row">
-              <h5>Bluetooth Kul.</h5>
-              <div class="best-bar" style="width: 37%">54</div>
-            </div>
-            <div class="row">
-              <h5>Çanta XYZ</h5>
-              <div class="best-bar" style="width: 29%">42</div>
-            </div>
+            <% }) %> <% } else { %>
+            <p>Son 1 ayda ürün hareketi bulunamadı.</p>
+            <% } %>
           </div>
         </div>
       </div>
