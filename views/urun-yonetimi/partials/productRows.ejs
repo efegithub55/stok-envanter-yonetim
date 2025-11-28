@@ -1,0 +1,50 @@
+<% products.forEach((item) => { %>
+<tr>
+  <td class="checkbox-cell"><input type="checkbox" /></td>
+  <td>
+    <div class="table-image">
+      <img src="/assets/products/<%= item.resim_url %>" alt="" />
+    </div>
+  </td>
+  <td>
+    <div class="col">
+      <a href=""><%= item.urun_adi %></a>
+      <p>#<%= item.sku %></p>
+    </div>
+  </td>
+  <td>
+    <div class="category-badge" data-label="<%= item.kategori_adi %>"></div>
+  </td>
+  <td class="stock-cell">
+    <div class="col">
+      <div
+        class="stock-amount <%= item.mevcut_stok <= item.min_stok / 2 ? 'critical' : item.mevcut_stok <= item.min_stok ? 'low' : 'normal' %>"
+      >
+        <%= item.mevcut_stok %>
+      </div>
+      <div class="stock-min">Min: <%= item.min_stok %></div>
+    </div>
+  </td>
+  <td class="price-cell">
+    <p>
+      <span class="bxr bx-lira"></span><%= item.alis_fiyati.toLocaleString() %>
+    </p>
+  </td>
+  <td class="price-cell">
+    <p>
+      <span class="bxr bx-lira"></span><%= (item.alis_fiyati *
+      item.mevcut_stok).toLocaleString() %>
+    </p>
+  </td>
+  <td class="status-cell">
+    <div
+      class="circle circle-<%= item.mevcut_stok <= item.min_stok / 2 ? 'danger' : item.mevcut_stok <= item.min_stok ? 'warning' : 'success' %>"
+    ></div>
+  </td>
+  <td class="actions-cell">
+    <button class="act-btn">
+      <span class="bxr bxs-dots-vertical"></span>
+    </button>
+  </td>
+</tr>
+<% }) %>

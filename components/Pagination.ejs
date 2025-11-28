@@ -1,0 +1,74 @@
+<div class="pagination-container">
+  <div class="col">
+    <p>
+      <%= pagination.startIndex %>-<%= pagination.endIndex %> arası gösteriliyor
+      (Toplam :
+      <strong>
+        <%= pagination.total.toLocaleString("tr-TR") %>
+      </strong>
+      )
+    </p>
+    <p>
+      <label for="page-limit">Sayfa başına:</label>
+      <select
+        name="page-limit"
+        id="page-limit"
+        class="page-limit"
+        onchange="changePageLimit(this.value)"
+      >
+        <option value="20" <%= pagination.perPage == 20 ? "selected" : "" %>>
+          20
+        </option>
+        <option value="50" <%= pagination.perPage == 50 ? "selected" : "" %>>
+          50
+        </option>
+        <option value="100" <%= pagination.perPage == 100 ? "selected" : "" %>>
+          100
+        </option>
+        <option value="all" <%= pagination.perPage === "all" ? "selected" : "" %>>
+          Tümü
+        </option>
+      </select>
+    </p>
+  </div>
+
+  <div class="col">
+    <div class="pagination">
+      <a
+        class="pg-btn prev-btn <%= !pagination.hasPrev ? "disabled" : "" %>"
+        href="<%= pagination.hasPrev 
+          ? `?page=${pagination.currentPage - 1}&limit=${pagination.perPage}` 
+          : "javascript:void(0)" %>"
+      >
+        <span class="bxr bx-chevron-left"></span> <i>Önceki</i>
+      </a>
+
+      <% pagination.pages.forEach(function(p){ %>
+        <a
+          class="pg-btn <%= p === pagination.currentPage ? "active" : "" %>"
+          href="?page=<%= p %>&limit=<%= pagination.perPage %>"
+        >
+          <%= p %>
+        </a>
+      <% }) %>
+
+      <a
+        class="pg-btn next-btn <%= !pagination.hasNext ? "disabled" : "" %>"
+        href="<%= pagination.hasNext 
+          ? `?page=${pagination.currentPage + 1}&limit=${pagination.perPage}` 
+          : "javascript:void(0)" %>"
+      >
+        <i>Sonraki</i> <span class="bxr bx-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function changePageLimit(limit) {
+    const params = new URLSearchParams(window.location.search);
+    params.set("limit", limit);
+    params.set("page", 1);
+    window.location.search = params.toString();
+  }
+</script>

@@ -2,630 +2,646 @@
 <html lang="en">
   <%- include("../../components/Head", { title: "Ürünler" }) %>
   <body class="light" style="display: flex">
+    <% const selectedCategoriesSafe = Array.isArray(selectedCategories) ?
+    selectedCategories.map(String) : []; const selectedStockSafe =
+    Array.isArray(selectedStock) ? selectedStock.map(String) : []; %>
     <!-- Sidebar -->
     <%- include("../../components/Sidebar", { active: "urunler" }) %>
     <!-- Main -->
-    <main id="dashboard-main">
-      <div class="products-header">
-        <div class="col">
-          <div class="row">
-            <h2>Ürünler</h2>
-            <div class="info-box primary">1,247</div>
-          </div>
-          <div class="row">
-            <p>Tüm ürünlerinizi yönetin, düzenleyin ve takip edin.</p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="product-actions">
-            <a class="btn" href=""
-              ><span class="bxr bx-arrow-in-down-square-half"></span>Excel
-              İndir</a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="dash-divider"></div>
-      <div class="filter-section">
-        <div class="inp-sec">
-          <input
-            type="text"
-            placeholder="Ürün adı, barkod, SKU veya açıklama ara..."
-            name="productSearch"
-          />
-          <label for="productSearch"><span class="bxr bx-search"></span></label>
-        </div>
-        <div class="row">
+    <form action="/urun-yonetimi/urunler" method="get" class="filter-form">
+      <main id="dashboard-main">
+        <div class="products-header">
           <div class="col">
-            <div class="filter-container">
-              <div class="filter-dropdown">
-                <div class="filter-dd-title">
-                  <span class="bxr bx-menu-filter"></span>Tüm kategoriler
-                  <span class="bxr bx-chevron-down"></span>
-                </div>
-                <div class="filter-dd-content">
-                  <div class="dd-container">
-                    <div class="dd-header">
-                      <h5>Kategori Seçin</h5>
-                      <a href="">Temizle</a>
-                    </div>
-                    <div class="dd-searchbox">
-                      <div class="inp-sec-alt">
-                        <input
-                          type="text"
-                          name="categorySearch"
-                          placeholder="Kategori ara..."
-                        />
-                        <label for="categorySearch"
-                          ><span class="bxr bx-search"></span
-                        ></label>
+            <div class="row">
+              <h2>Ürünler</h2>
+              <div class="info-box primary"><%= totalProduct || '0' %></div>
+            </div>
+            <div class="row">
+              <p>Tüm ürünlerinizi yönetin, düzenleyin ve takip edin.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="product-actions">
+              <a class="btn"
+                ><span class="bxr bx-arrow-in-down-square-half"></span>Excel
+                İndir</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="dash-divider"></div>
+        <div class="filter-section">
+          <div class="inp-sec">
+            <input
+              type="text"
+              placeholder="Ürün adı, barkod, SKU veya açıklama ara..."
+              name="productSearch"
+              value="<%= productSearch || '' %>"
+            />
+            <label for="productSearch"
+              ><span class="bxr bx-search"></span
+            ></label>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="filter-container">
+                <div class="filter-dropdown">
+                  <div class="filter-dd-title">
+                    <span class="bxr bx-menu-filter"></span>Tüm kategoriler
+                    <span class="bxr bx-chevron-down"></span>
+                  </div>
+                  <div class="filter-dd-content">
+                    <div class="dd-container">
+                      <div class="dd-header">
+                        <h5>Kategori Seçin</h5>
                       </div>
-                    </div>
-                    <div class="dd-list">
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" checked />
-                          Tümü
+                      <div class="dd-list">
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" checked />
+                            Tümü
+                          </div>
+                          <div class="col">
+                            <p><%= pagination.total %></p>
+                          </div>
                         </div>
-                        <div class="col">
-                          <p>1,247</p>
+                        <div class="dd-divider"></div>
+
+                        <% categoryStats.forEach((item) => { %>
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" name="categories" value="<%=
+                            item.id %>" <%=
+                            selectedCategoriesSafe.includes(String(item.id)) ?
+                            "checked" : "" %> /> <%= item.kategori_adi %>
+                          </div>
+                          <div class="col">
+                            <p><%= item.adet %></p>
+                          </div>
                         </div>
+                        <% }) %>
                       </div>
                       <div class="dd-divider"></div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          Elektronik
-                        </div>
-                        <div class="col"><p>437</p></div>
+                      <div class="dd-actions">
+                        <a href="" class="btn">İptal</a>
+                        <a
+                          href=""
+                          class="btn btn-primary"
+                          onclick="event.preventDefault(); this.closest('form').submit();"
+                          >Uygula</a
+                        >
                       </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          Gıda
-                        </div>
-                        <div class="col"><p>356</p></div>
-                      </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          Giyim
-                        </div>
-                        <div class="col"><p>248</p></div>
-                      </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          Aksesuar
-                        </div>
-                        <div class="col"><p>132</p></div>
-                      </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          Ev & Yaşam
-                        </div>
-                        <div class="col"><p>74</p></div>
-                      </div>
-                    </div>
-                    <div class="dd-divider"></div>
-                    <div class="dd-actions">
-                      <a href="" class="btn">İptal</a>
-                      <a href="" class="btn btn-primary">Uygula</a>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="filter-dropdown">
-                <div class="filter-dd-title">
-                  <span class="bxr bx-chart-bar-columns"></span>Stok Durumu
-                  <span class="bxr bx-chevron-down"></span>
-                </div>
-                <div class="filter-dd-content">
-                  <div class="dd-container">
-                    <div class="dd-header">
-                      <h5>Stok Durumu</h5>
-                      <a href="">Temizle</a>
-                    </div>
-                    <div class="dd-list">
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          <span class="status success"></span>
-                          Yeterli Stok
-                        </div>
-                        <div class="col">
-                          <p>1,150</p>
-                        </div>
+                <div class="filter-dropdown">
+                  <div class="filter-dd-title">
+                    <span class="bxr bx-chart-bar-columns"></span>Stok Durumu
+                    <span class="bxr bx-chevron-down"></span>
+                  </div>
+                  <div class="filter-dd-content">
+                    <div class="dd-container">
+                      <div class="dd-header">
+                        <h5>Stok Durumu</h5>
                       </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          <span class="status warning"></span>
-                          Düşük Stok
+                      <div class="dd-list">
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" name="stock" value="normal"
+                            <%= selectedStockSafe.includes("normal") ? "checked"
+                            : "" %> />
+                            <span class="status success"></span>
+                            Yeterli Stok
+                          </div>
+                          <div class="col">
+                            <p>
+                              <%= groups.find((item) => item.durum ===
+                              'normal')?.adet || 0 %>
+                            </p>
+                          </div>
                         </div>
-                        <div class="col">
-                          <p>74</p>
+
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" name="stock" value="low" <%=
+                            selectedStockSafe.includes("low") ? "checked" : ""
+                            %> />
+                            <span class="status warning"></span>
+                            Düşük Stok
+                          </div>
+                          <div class="col">
+                            <p>
+                              <%= groups.find((item) => item.durum ===
+                              'low')?.adet || 0 %>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          <span class="status danger"></span>
-                          Kritik Stok
+
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" name="stock" value="critical"
+                            <%= selectedStockSafe.includes("critical") ?
+                            "checked" : "" %> />
+                            <span class="status danger"></span>
+                            Kritik Stok
+                          </div>
+                          <div class="col">
+                            <p>
+                              <%= groups.find((item) => item.durum ===
+                              'critical')?.adet || 0 %>
+                            </p>
+                          </div>
                         </div>
-                        <div class="col">
-                          <p>23</p>
+
+                        <div class="dd-item">
+                          <div class="col">
+                            <input type="checkbox" name="stock" value="empty"
+                            <%= selectedStockSafe.includes("empty") ? "checked"
+                            : "" %> />
+                            <span class="status"></span>
+                            Tükendi
+                          </div>
+                          <div class="col">
+                            <p>
+                              <%= groups.find((item) => item.durum ===
+                              'empty')?.adet || 0 %>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div class="dd-item">
-                        <div class="col">
-                          <input type="checkbox" />
-                          <span class="status"></span>
-                          Tükendi
-                        </div>
-                        <div class="col">
-                          <p>0</p>
-                        </div>
+
+                        <div class="dd-divider"></div>
                       </div>
                       <div class="dd-divider"></div>
-                    </div>
-                    <div class="dd-divider"></div>
-                    <div class="dd-actions">
-                      <a href="" class="btn">İptal</a>
-                      <a href="" class="btn btn-primary">Uygula</a>
+                      <div class="dd-actions">
+                        <a href="" class="btn">İptal</a>
+                        <a
+                          href=""
+                          class="btn btn-primary"
+                          onclick="event.preventDefault(); this.closest('form').submit();"
+                          >Uygula</a
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="filter-dropdown">
-                <div class="filter-dd-title">
-                  <span class="bxr bx-lira"></span>Fiyat Aralığı
-                  <span class="bxr bx-chevron-down"></span>
-                </div>
-                <div class="filter-dd-content">
-                  <div class="dd-container">
-                    <div class="dd-header">
-                      <h5>Fiyat Aralığı</h5>
-                      <a href="">Sıfırla</a>
-                    </div>
-                    <div class="inp-row">
-                      <div class="input">
-                        <label for="minPrice">Min Fiyat</label>
-                        <input
-                          type="number"
-                          name="minPrice"
-                          min="0"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div class="input">
-                        <label for="maxPrice">Max Fiyat</label>
-                        <input
-                          type="number"
-                          name="maxPrice"
-                          min="0"
-                          placeholder="10,000"
-                        />
-                      </div>
-                    </div>
-                    <div class="quick-select">
-                      <div class="selection-text">Hızlı Seçim:</div>
-                      <div class="selections">
-                        <div class="select-btn">0₺ - 100₺</div>
-                        <div class="select-btn">100₺ - 500₺</div>
-                        <div class="select-btn">500₺ - 1,000₺</div>
-                        <div class="select-btn">1,000₺ - 5,000₺</div>
-                        <div class="select-btn">5,000₺ - 10,000₺</div>
-                        <div class="select-btn">10,000₺+</div>
-                      </div>
-                    </div>
-                    <div class="dd-divider"></div>
-                    <div class="dd-actions">
-                      <a href="" class="btn">İptal</a>
-                      <a href="" class="btn btn-primary">Uygula</a>
-                    </div>
+                <div class="filter-dropdown">
+                  <div class="filter-dd-title">
+                    <span class="bxr bx-lira"></span>Fiyat Aralığı
+                    <span class="bxr bx-chevron-down"></span>
                   </div>
-                </div>
-              </div>
-              <div class="filter-dropdown">
-                <div class="filter-dd-title">
-                  <span class="bxr bx-menu-left"></span>Sırala: En Yeni
-                  <span class="bxr bx-chevron-down"></span>
-                </div>
-                <div class="filter-dd-content">
-                  <div class="dd-container">
-                    <div class="dd-header">
-                      <h5>Sıralama Seçin</h5>
-                    </div>
-                    <div class="dd-list">
-                      <div class="dd-item selectable selected">
-                        <div class="col">
-                          <span class="bx bx-time"></span>
-                          En Yeni
+                  <div class="filter-dd-content">
+                    <div class="dd-container">
+                      <div class="dd-header">
+                        <h5>Fiyat Aralığı</h5>
+                        <a href="">Sıfırla</a>
+                      </div>
+                      <div class="inp-row">
+                        <div class="input">
+                          <label for="minPrice">Min Fiyat</label>
+                          <input
+                            type="number"
+                            name="minPrice"
+                            min="0"
+                            placeholder="0"
+                            value="<%= minPrice ? minPrice : '' %>"
+                          />
                         </div>
-                        <div class="col">
-                          <div class="checkmark">
-                            <span class="bxr bx-check"></span>
+                        <div class="input">
+                          <label for="maxPrice">Max Fiyat</label>
+                          <input
+                            type="number"
+                            name="maxPrice"
+                            min="0"
+                            placeholder="10,000"
+                            value="<%= maxPrice ? maxPrice : '' %>"
+                          />
+                        </div>
+                      </div>
+                      <div class="quick-select">
+                        <div class="selection-text">Hızlı Seçim:</div>
+                        <div class="selections">
+                          <div class="select-btn" data-min="0" data-max="100">
+                            0₺ - 100₺
+                          </div>
+                          <div class="select-btn" data-min="100" data-max="500">
+                            100₺ - 500₺
+                          </div>
+                          <div
+                            class="select-btn"
+                            data-min="500"
+                            data-max="1000"
+                          >
+                            500₺ - 1,000₺
+                          </div>
+                          <div
+                            class="select-btn"
+                            data-min="1000"
+                            data-max="5000"
+                          >
+                            1,000₺ - 5,000₺
+                          </div>
+                          <div
+                            class="select-btn"
+                            data-min="5000"
+                            data-max="10000"
+                          >
+                            5,000₺ - 10,000₺
+                          </div>
+                          <div class="select-btn" data-min="10000" data-max="">
+                            10,000₺+
                           </div>
                         </div>
                       </div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-time-five"></span>
-                          En Eski
-                        </div>
-                        <div class="col"></div>
-                      </div>
                       <div class="dd-divider"></div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-sort-a-z"></span>
-                          İsim (A-Z)
-                        </div>
-                        <div class="col"></div>
+                      <div class="dd-actions">
+                        <a href="" class="btn">İptal</a>
+                        <a
+                          href=""
+                          class="btn btn-primary"
+                          onclick="event.preventDefault(); this.closest('form').submit();"
+                          >Uygula</a
+                        >
                       </div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-sort-z-a"></span>
-                          İsim (Z-A)
-                        </div>
-                        <div class="col"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-dropdown">
+                  <div class="filter-dd-title">
+                    <span class="bxr bx-menu-left"></span>Sırala: <% let
+                    sortLabel = ""; switch (sort) { case "newest": sortLabel =
+                    "En Yeni"; break; case "oldest": sortLabel = "En Eski";
+                    break; case "name_asc": sortLabel = "İsim (A-Z)"; break;
+                    case "name_desc": sortLabel = "İsim (Z-A)"; break; case
+                    "price_asc": sortLabel = "Fiyat (Düşük -> Yüksek)"; break;
+                    case "price_desc": sortLabel = "Fiyat (Yüksek -> Düşük)";
+                    break; case "stock_asc": sortLabel = "Stok (Az -> Çok)";
+                    break; case "stock_desc": sortLabel = "Stok (Çok -> Az)";
+                    break; case "popular": sortLabel = "En Popüler"; break; case
+                    "best_seller": sortLabel = "En Çok Satan"; break; default:
+                    sortLabel = "En Yeni"; } %> <%= sortLabel %>
+                    <span class="bxr bx-chevron-down"></span>
+                  </div>
+                  <div class="filter-dd-content">
+                    <div class="dd-container">
+                      <div class="dd-header">
+                        <h5>Sıralama Seçin</h5>
                       </div>
-                      <div class="dd-divider"></div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-trending-up"></span>
-                          Fiyat (Düşük -> Yüksek)
+                      <div class="dd-list">
+                        <div
+                          class="dd-item selectable <%= sort == 'newest' ? 'selected' : '' %>"
+                          data-sort="newest"
+                        >
+                          <div class="col">
+                            <span class="bx bx-time"></span>
+                            En Yeni
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'newest') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-trending-down"></span>
-                          Fiyat (Yüksek -> Düşük)
+                        <div
+                          class="dd-item selectable <%= sort == 'oldest' ? 'selected' : '' %>"
+                          data-sort="oldest"
+                        >
+                          <div class="col">
+                            <span class="bx bx-time-five"></span>
+                            En Eski
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'oldest') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="dd-divider"></div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-chevron-up"></span>
-                          Stok (Az -> Çok)
+                        <div class="dd-divider"></div>
+                        <div
+                          class="dd-item selectable <%= sort == 'name_asc' ? 'selected' : '' %>"
+                          data-sort="name_asc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-sort-a-z"></span>
+                            İsim (A-Z)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'name_asc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-chevron-down"></span>
-                          Stok (Çok -> Az)
+                        <div
+                          class="dd-item selectable <%= sort == 'name_desc' ? 'selected' : '' %>"
+                          data-sort="name_desc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-sort-z-a"></span>
+                            İsim (Z-A)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'name_desc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="dd-divider"></div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-star"></span>
-                          En Popüler
+                        <div class="dd-divider"></div>
+                        <div
+                          class="dd-item selectable <%= sort == 'price_asc' ? 'selected' : '' %>"
+                          data-sort="price_asc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-trending-up"></span>
+                            Fiyat (Düşük -> Yüksek)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'price_asc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
-                      </div>
-                      <div class="dd-item selectable">
-                        <div class="col">
-                          <span class="bx bx-line-chart"></span>
-                          En Çok Satan
+                        <div
+                          class="dd-item selectable <%= sort == 'price_desc' ? 'selected' : '' %>"
+                          data-sort="price_desc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-trending-down"></span>
+                            Fiyat (Yüksek -> Düşük)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'price_desc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
                         </div>
-                        <div class="col"></div>
+                        <div class="dd-divider"></div>
+                        <div
+                          class="dd-item selectable <%= sort == 'stock_asc' ? 'selected' : '' %>"
+                          data-sort="stock_asc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-chevron-up"></span>
+                            Stok (Az -> Çok)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'stock_asc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                        <div
+                          class="dd-item selectable <%= sort == 'stock_desc' ? 'selected' : '' %>"
+                          data-sort="stock_desc"
+                        >
+                          <div class="col">
+                            <span class="bx bx-chevron-down"></span>
+                            Stok (Çok -> Az)
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'stock_desc') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                        <div class="dd-divider"></div>
+                        <div
+                          class="dd-item selectable <%= sort == 'popular' ? 'selected' : '' %>"
+                          data-sort="popular"
+                        >
+                          <div class="col">
+                            <span class="bx bx-star"></span>
+                            En Popüler
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'popular') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                        <div
+                          class="dd-item selectable <%= sort == 'best_seller' ? 'selected' : '' %>"
+                          data-sort="best_seller"
+                        >
+                          <div class="col">
+                            <span class="bx bx-line-chart"></span>
+                            En Çok Satan
+                          </div>
+                          <div class="col">
+                            <% if (sort == 'best_seller') { %>
+                            <div class="checkmark">
+                              <span class="bxr bx-check"></span>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="view-toggle">
-              <div
-                class="view-toggle-btn active"
-                onclick="vibrate(30000)"
-                data-view="table"
-              >
-                <span class="bxr bx-menu"></span>
+            <div class="col">
+              <div class="view-toggle">
+                <div
+                  class="view-toggle-btn active"
+                  onclick="vibrate(30000)"
+                  data-view="table"
+                >
+                  <span class="bxr bx-menu"></span>
+                </div>
+                <div
+                  class="view-toggle-btn"
+                  onclick="vibrate(50)"
+                  data-view="grid"
+                >
+                  <span class="bxr bx-table-cells-large"></span>
+                </div>
+                <div
+                  class="view-toggle-btn"
+                  onclick="vibrate(50)"
+                  data-view="compact"
+                >
+                  <span class="bxr bx-chart-bar-columns"></span>
+                </div>
               </div>
-              <div
-                class="view-toggle-btn"
-                onclick="vibrate(50)"
-                data-view="grid"
-              >
-                <span class="bxr bx-table-cells-large"></span>
-              </div>
-              <div
-                class="view-toggle-btn"
-                onclick="vibrate(50)"
-                data-view="compact"
-              >
-                <span class="bxr bx-chart-bar-columns"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Tablo Görünümü -->
-      <div class="table-section table-view">
-        <table>
-          <thead>
-            <tr>
-              <th class="checkbox-cell"><input type="checkbox" /></th>
-              <th>Resim</th>
-              <th class="sortable">
-                <p>
-                  Ürün Bilgileri <span class="bxr bx-chevrons-up-down"></span>
-                </p>
-              </th>
-              <th class="sortable">
-                <p>Kategori <span class="bxr bx-chevrons-up-down"></span></p>
-              </th>
-              <th class="sortable">
-                <p>Stok <span class="bxr bx-chevrons-up-down"></span></p>
-              </th>
-              <th class="sortable">
-                <p>Birim Fiyat <span class="bxr bx-chevrons-up-down"></span></p>
-              </th>
-              <th class="sortable">
-                <p>
-                  Toplam Değer <span class="bxr bx-chevrons-up-down"></span>
-                </p>
-              </th>
-              <th>Durum</th>
-              <th>İşlemler</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="checkbox-cell"><input type="checkbox" /></td>
-              <td>
-                <div class="table-image">
-                  <img
-                    src="https://assets.getmobil.com/uploads/13464/getmobil-apple-iphone13promax-silver-00webp.png"
-                    alt=""
-                  />
-                </div>
-              </td>
-              <td>
-                <div class="col">
-                  <a href="">iPhone 13 Pro Max</a>
-                  <p>#BAR123456</p>
-                </div>
-              </td>
-              <td>
-                <div class="category-badge" data-label="Cila Ürünleri"></div>
-              </td>
-              <td class="stock-cell">
-                <div class="col">
-                  <!-- normal, low, critical -->
-                  <div class="stock-amount normal">45</div>
-                  <div class="stock-min">Min: 50</div>
-                </div>
-              </td>
-              <td class="price-cell">
-                <p><span class="bxr bx-lira"></span>15,000</p>
-              </td>
-              <td class="price-cell">
-                <p><span class="bxr bx-lira"></span>675,000</p>
-              </td>
-              <td class="status-cell">
-                <div class="circle circle-success"></div>
-              </td>
-              <td class="actions-cell">
-                <button class="act-btn">
-                  <span class="bxr bxs-dots-vertical"></span>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="checkbox-cell"><input type="checkbox" /></td>
-              <td>
-                <div class="table-image">
-                  <img
-                    src="https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_141310014"
-                    alt=""
-                  />
-                </div>
-              </td>
-              <td>
-                <div class="col">
-                  <a href="">Samsung QLED 55" TV</a>
-                  <p>#BAR789012</p>
-                </div>
-              </td>
-              <td>
-                <div class="category-badge" data-label="Araç Aksesuar"></div>
-              </td>
-              <td class="stock-cell">
-                <div class="col">
-                  <!-- normal, low, critical -->
-                  <div class="stock-amount low">8</div>
-                  <div class="stock-min">Min: 30</div>
-                </div>
-              </td>
-              <td class="price-cell">
-                <p><span class="bxr bx-lira"></span>12,000</p>
-              </td>
-              <td class="price-cell">
-                <p><span class="bxr bx-lira"></span>96,000</p>
-              </td>
-              <td class="status-cell">
-                <div class="circle circle-warning"></div>
-              </td>
-              <td class="actions-cell">
-                <button class="act-btn">
-                  <span class="bxr bxs-dots-vertical"></span>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="pagination-container">
-          <div class="col">
-            <p>1-20 arası gösteriliyor (Toplam : <strong>1,247</strong>)</p>
-            <p>
-              <label for="page-limit">Sayfa başına:</label>
-              <select name="page-limit" id="page-limit" class="page-limit">
-                <option value="20" selected>20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="all">Tümü</option>
-              </select>
-            </p>
-          </div>
-          <div class="col">
-            <div class="pagination">
-              <a class="pg-btn prev-btn disabled"
-                ><span class="bxr bx-chevron-left"></span> <i>Önceki</i></a
-              >
-              <a class="pg-btn active">1</a>
-              <a class="pg-btn">2</a>
-              <a class="pg-btn">3</a>
-              <a class="pg-btn">4</a>
-              <a class="pg-btn">5</a>
-              <span class="dots">...</span>
-              <a class="pg-btn">63</a>
-              <a class="pg-btn next-btn"
-                ><i>Sonraki</i> <span class="bxr bx-chevron-right"></span
-              ></a>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Grid Görünümü -->
-      <div class="grid-view hidden">
-        <div class="product-grid">
-          <div class="product-item">
-            <div class="quick-actions">
-              <div class="checkbox"><input type="checkbox" /></div>
-              <div class="pr-actions">
-                <div class="act-btn"><span class="bxr bx-edit-alt"></span></div>
-                <div class="act-btn"><span class="bxr bx-eye-alt"></span></div>
-              </div>
-            </div>
-            <div class="product-image">
-              <img
-                src="https://assets.getmobil.com/uploads/13464/getmobil-apple-iphone13promax-silver-00webp.png"
-              />
-            </div>
-            <div class="product-content">
-              <a href="">iPhone 13 Pro Max</a>
-              <p>#BAR123456</p>
-              <div class="category-badge">Elektronik</div>
-            </div>
-            <div class="box-divider"></div>
-            <div class="product-info">
-              <div class="row">
-                <div class="col"><p>Stok:</p></div>
-                <div class="col">
-                  <p>45</p>
-                  <div class="status success"></div>
-                </div>
-              </div>
-              <div class="row">
-                <p class="price"><span class="bxr bx-lira"></span>15,000</p>
-              </div>
-            </div>
-            <div class="box-divider"></div>
-            <div class="action-buttons">
-              <a href="" class="btn">Detay</a>
-              <button class="act-btn">
-                <span class="bxr bx-dots-vertical"></span>
-              </button>
-            </div>
-          </div>
+        <!-- Tablo Görünümü -->
+        <div class="table-section table-view">
+          <table>
+            <thead>
+              <tr>
+                <th class="checkbox-cell"><input type="checkbox" /></th>
+                <th>Resim</th>
+                <th class="sortable">
+                  <p>
+                    Ürün Bilgileri <span class="bxr bx-chevrons-up-down"></span>
+                  </p>
+                </th>
+                <th class="sortable">
+                  <p>Kategori <span class="bxr bx-chevrons-up-down"></span></p>
+                </th>
+                <th class="sortable">
+                  <p>Stok <span class="bxr bx-chevrons-up-down"></span></p>
+                </th>
+                <th class="sortable">
+                  <p>
+                    Birim Fiyat <span class="bxr bx-chevrons-up-down"></span>
+                  </p>
+                </th>
+                <th class="sortable">
+                  <p>
+                    Toplam Değer <span class="bxr bx-chevrons-up-down"></span>
+                  </p>
+                </th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody">
+              <%- include("../urun-yonetimi/partials/productRows", { products })
+              %>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <!-- Compact View -->
-      <div class="table-section compact-view hidden">
-        <table>
-          <thead>
-            <tr>
-              <th class="checkbox-cell"><input type="checkbox" /></th>
-              <th></th>
-              <th align="start">Ürün</th>
-              <th>Kategori</th>
-              <th>Stok</th>
-              <th>Fiyat</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="checkbox-cell"><input type="checkbox" /></td>
-              <td>
-                <div class="table-image">
-                  <img
-                    src="https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_141310014"
-                    alt=""
-                  />
-                </div>
-              </td>
-              <td>
-                <div class="col">
-                  <a href="">Samsung QLED 55" TV</a>
-                  <p>#BAR789012</p>
-                </div>
-              </td>
-              <td>
-                <div class="category-badge" data-label="Elektronik"></div>
-              </td>
-              <td class="stock-cell">
-                <div class="col">
-                  45 <span class="circle circle-success"></span>
-                </div>
-              </td>
-              <td align="start" class="price-cell">
-                <p><span class="bxr bx-lira"></span>12,000</p>
-              </td>
-              <td>
-                <div class="action-buttons">
+        <!-- Grid Görünümü -->
+        <div class="grid-view hidden">
+          <div class="product-grid">
+            <% products.map((item) => { %>
+            <div class="product-item">
+              <div class="quick-actions">
+                <div class="checkbox"><input type="checkbox" /></div>
+                <div class="pr-actions">
                   <div class="act-btn">
-                    <span class="bxr bx-dots-vertical"></span>
+                    <span class="bxr bx-edit-alt"></span>
+                  </div>
+                  <div class="act-btn">
+                    <span class="bxr bx-eye-alt"></span>
                   </div>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="pagination-container">
-          <div class="col">
-            <p>1-20 arası gösteriliyor (Toplam : <strong>1,247</strong>)</p>
-            <p>
-              <label for="page-limit">Sayfa başına:</label>
-              <select name="page-limit" id="page-limit" class="page-limit">
-                <option value="20" selected>20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="all">Tümü</option>
-              </select>
-            </p>
-          </div>
-          <div class="col">
-            <div class="pagination">
-              <a class="pg-btn prev-btn disabled"
-                ><span class="bxr bx-chevron-left"></span> <i>Önceki</i></a
-              >
-              <a class="pg-btn active">1</a>
-              <a class="pg-btn">2</a>
-              <a class="pg-btn">3</a>
-              <a class="pg-btn">4</a>
-              <a class="pg-btn">5</a>
-              <span class="dots">...</span>
-              <a class="pg-btn">63</a>
-              <a class="pg-btn next-btn"
-                ><i>Sonraki</i> <span class="bxr bx-chevron-right"></span
-              ></a>
+              </div>
+              <div class="product-image">
+                <img src="/assets/products/<%= item.resim_url %>" />
+              </div>
+              <div class="product-content">
+                <a href=""><%= item.urun_adi %></a>
+                <p>#<%= item.sku %></p>
+                <div
+                  class="category-badge"
+                  data-label="<%= item.kategori_adi %>"
+                ></div>
+              </div>
+              <div class="box-divider"></div>
+              <div class="product-info">
+                <div class="row">
+                  <div class="col"><p>Stok:</p></div>
+                  <div class="col">
+                    <p><%= item.mevcut_stok %></p>
+                    <div
+                      class="status <%= item.mevcut_stok <= item.min_stok / 2 ? 'danger' : item.mevcut_stok <= item.min_stok ? 'warning' : 'success' %>"
+                    ></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <p class="price">
+                    <span class="bxr bx-lira"></span><%=
+                    item.alis_fiyati.toLocaleString() %>
+                  </p>
+                </div>
+              </div>
+              <div class="box-divider"></div>
+              <div class="action-buttons">
+                <a href="" class="btn">Detay</a>
+                <button class="act-btn">
+                  <span class="bxr bx-dots-vertical"></span>
+                </button>
+              </div>
             </div>
+            <% }) %>
           </div>
         </div>
-      </div>
-    </main>
+        <!-- Compact View -->
+        <div class="table-section compact-view hidden">
+          <table>
+            <thead>
+              <tr>
+                <th class="checkbox-cell"><input type="checkbox" /></th>
+                <th></th>
+                <th align="start">Ürün</th>
+                <th>Kategori</th>
+                <th>Stok</th>
+                <th>Fiyat</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.map((item) => { %>
+              <tr>
+                <td class="checkbox-cell"><input type="checkbox" /></td>
+                <td>
+                  <div class="table-image">
+                    <img src="/assets/products/<%= item.resim_url %>" alt="" />
+                  </div>
+                </td>
+                <td>
+                  <div class="col">
+                    <a href=""><%= item.urun_adi %></a>
+                    <p>#<%= item.sku %></p>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    class="category-badge"
+                    data-label="<%= item.kategori_adi %>"
+                  ></div>
+                </td>
+                <td class="stock-cell">
+                  <div class="col">
+                    <%= item.mevcut_stok %>
+                    <span
+                      class="circle circle-<%= item.mevcut_stok <= item.min_stok / 2 ? 'danger' : item.mevcut_stok <= item.min_stok ? 'warning' : 'success' %>"
+                    ></span>
+                  </div>
+                </td>
+                <td align="start" class="price-cell">
+                  <p>
+                    <span class="bxr bx-lira"></span><%=
+                    item.alis_fiyati.toLocaleString() %>
+                  </p>
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <div class="act-btn">
+                      <span class="bxr bx-dots-vertical"></span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <%- include("../../components/Pagination") %>
+      </main>
+    </form>
     <!-- Scripts -->
     <script src="/assets/js/select.js"></script>
     <script src="/assets/js/viewChanger.js"></script>
