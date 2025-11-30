@@ -12,9 +12,16 @@ class Category {
 
   static async getAllCategories() {
     try {
-      let sql = "SELECT * FROM kategoriler";
+      let sql = `SELECT 
+    k.*,
+    COUNT(p.id) AS urun_sayisi,
+    COALESCE(SUM(p.alis_fiyati), 0) AS kategori_degeri
+FROM kategoriler k
+LEFT JOIN urunler p ON p.kategori_id = k.id
+GROUP BY k.id;
+`;
       const [rows] = await db.query(sql);
-      return rows.map((row) => new Category(row));
+      return rows;
     } catch (err) {
       console.error("Category.getAllCategories hata: ", err);
       throw err;
@@ -36,6 +43,17 @@ class Category {
       return rows;
     } catch (err) {
       console.error("Categories.getCategoryStats hata: ", err);
+      throw err;
+    }
+  }
+
+  static async getLastAdded() {
+    try {
+      let sql = `SELECT * FROM kategoriler ORDER BY created_at DESC LIMIT 1`;
+      const [[row]] = await db.query(sql);
+      return row;
+    } catch (err) {
+      console.error("Category.getLastAdded hata:", err);
       throw err;
     }
   }

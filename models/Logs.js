@@ -78,6 +78,27 @@ class Logs {
       throw err;
     }
   }
+
+  static async getMostMovement() {
+    try {
+      let sql = `SELECT 
+          u.urun_adi,
+          k.kategori_adi,
+          SUM(ABS(h.miktar)) AS miktar
+          FROM hareketler h
+          JOIN urunler u ON h.urun_id = u.id
+          JOIN kategoriler k ON u.kategori_id = k.id
+          WHERE h.created_at >= CURDATE() - INTERVAL 1 MONTH
+          GROUP BY h.urun_id, u.urun_adi
+          ORDER BY miktar DESC
+          LIMIT 1;`;
+      const [[row]] = await db.query(sql);
+      return row;
+    } catch (err) {
+      console.error("Logs.getMostMovement hata: ", err);
+      throw err;
+    }
+  }
 }
 
 module.exports = Logs;

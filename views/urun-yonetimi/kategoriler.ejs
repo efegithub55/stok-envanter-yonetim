@@ -29,7 +29,7 @@
       <div class="category-flexbox">
         <div class="category-flex-item">
           <div class="col">
-            <h4>214</h4>
+            <h4><%= totalCategory %></h4>
             <p>Toplam Kategori</p>
           </div>
           <div class="col">
@@ -38,7 +38,7 @@
         </div>
         <div class="category-flex-item">
           <div class="col">
-            <h4>1,247</h4>
+            <h4><%= totalProduct %></h4>
             <p>Toplam Ürün</p>
           </div>
           <div class="col">
@@ -47,7 +47,7 @@
         </div>
         <div class="category-flex-item">
           <div class="col">
-            <h4>Elektronik</h4>
+            <h4><%= mostMovement.kategori_adi %></h4>
             <p>En Popüler</p>
           </div>
           <div class="col">
@@ -56,7 +56,7 @@
         </div>
         <div class="category-flex-item">
           <div class="col">
-            <h4>Sağlık & Kozmetik</h4>
+            <h4><%= lastAdded.kategori_adi %></h4>
             <p>Son Eklenen</p>
           </div>
           <div class="col">
@@ -65,7 +65,8 @@
         </div>
       </div>
       <div class="category-grid">
-        <div class="category-box" data-label="Elektronik">
+        <% categories.forEach((ctg) => { %>
+        <div class="category-box" data-label="<%= ctg.kategori_adi %>">
           <div class="category-actions">
             <a href="" class="action-btn"
               ><span class="bxr bx-edit-alt"></span
@@ -75,23 +76,25 @@
             ></a>
           </div>
           <div class="row">
-            <h4 class="category-badge" data-label="Elektronik"></h4>
-            <p class="description">
-              Telefon, tablet, bilgisayar ve elektronik cihazlar
-            </p>
+            <h4
+              class="category-badge"
+              data-label="<%= ctg.kategori_adi %>"
+            ></h4>
+            <p class="description"><%= ctg.aciklama %></p>
           </div>
           <div class="ctg-divider"></div>
           <div class="row column">
             <div class="col">
               <p>Ürün Sayısı</p>
-              <div>437</div>
+              <div><%= ctg.urun_sayisi %></div>
             </div>
             <div class="col">
               <p>Toplam Değer</p>
-              <div>₺2.4M</div>
+              <div>₺<%= ctg.kategori_degeri.toLocaleString() %></div>
             </div>
           </div>
         </div>
+        <% }) %>
       </div>
     </main>
     <!-- Scripts -->
