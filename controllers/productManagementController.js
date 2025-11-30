@@ -1,6 +1,7 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
 const Units = require("../models/Units");
+const Logs = require("../models/Logs");
 
 exports.getProducts = async (req, res) => {
   const categoryStats = await Category.getCategoryStats();
@@ -138,8 +139,18 @@ exports.postAddProduct = async (req, res) => {
   }
 };
 
-exports.getCategories = (req, res) => {
-  res.render("urun-yonetimi/kategoriler");
+exports.getCategories = async (req, res) => {
+  const mostMovement = await Logs.getMostMovement();
+  const lastAdded = await Category.getLastAdded();
+  const totalProduct = await Product.getAllProducts();
+  const totalCategory = await Category.getAllCategories();
+  res.render("urun-yonetimi/kategoriler", {
+    mostMovement,
+    lastAdded,
+    totalProduct: totalProduct.length,
+    totalCategory: totalCategory.length,
+    categories: totalCategory,
+  });
 };
 
 exports.ajaxSearchProducts = async (req, res) => {
