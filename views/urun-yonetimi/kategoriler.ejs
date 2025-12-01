@@ -19,7 +19,7 @@
         </div>
         <div class="col">
           <div class="row">
-            <a href="" class="btn btn-primary"
+            <a class="btn btn-primary addCategoryBtn"
               ><span class="bxr bx-plus"></span>Yeni Kategori Ekle</a
             >
           </div>
@@ -71,7 +71,9 @@
             <a href="" class="action-btn"
               ><span class="bxr bx-edit-alt"></span
             ></a>
-            <a href="" class="action-btn delete"
+            <a
+              href="/urun-yonetimi/kategoriler/sil/<%= ctg.id %>"
+              class="action-btn delete"
               ><span class="bxr bx-trash"></span
             ></a>
           </div>
@@ -97,7 +99,11 @@
         <% }) %>
       </div>
     </main>
+    <div class="modal-container hidden">
+      <%- include("../../components/addCategory") %>
+    </div>
     <!-- Scripts -->
     <script src="/assets/js/generateColorFromStr.js"></script>
+    <script src="/assets/js/modal.js"></script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+<div class="modal">
+  <div class="modal-close"><span class="bxr bx-x"></span></div>
+  <div class="modal-header">Yeni Kategori Ekle</div>
+  <div class="modal-content">
+    <form
+      action="/urun-yonetimi/kategoriler/ekle"
+      method="POST"
+      class="modal-form"
+    >
+      <div class="modal-inp-row">
+        <label for="kategori_adi">Kategori Adı</label>
+        <input
+          type="text"
+          name="kategori_adi"
+          placeholder="Elektronik, Giyim..."
+        />
+      </div>
+      <div class="modal-inp-row">
+        <label for="aciklama">Açıklama</label>
+        <textarea name="aciklama" placeholder=""></textarea>
+      </div>
+      <div class="modal-inp-row">
+        <button type="submit" class="btn btn-primary center">
+          <span class="text"><span class="bxr bxs-save"></span>Kaydet</span>
+          <span class="spinner"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="/assets/js/lodaing.helper.js"></script>

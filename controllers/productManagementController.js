@@ -153,6 +153,18 @@ exports.getCategories = async (req, res) => {
   });
 };
 
+exports.postAddCategory = async (req, res) => {
+  const { kategori_adi, aciklama } = req.body;
+  await Category.addCategory(kategori_adi, aciklama);
+  res.redirect("/urun-yonetimi/kategoriler");
+};
+
+exports.getDeleteCategory = async (req, res) => {
+  const id = req.params.id;
+  await Category.deleteCategory(id);
+  res.redirect("/urun-yonetimi/kategoriler");
+};
+
 exports.ajaxSearchProducts = async (req, res) => {
   try {
     const page = req.query.page || 1;
