@@ -14,5 +14,10 @@ router.post(
 router.get("/yeni-urun", productManagementController.getAddProduct);
 
 router.get("/kategoriler", productManagementController.getCategories);
+router.post("/kategoriler/ekle", productManagementController.postAddCategory);
+router.get(
+  "/kategoriler/sil/:id",
+  productManagementController.getDeleteCategory
+);
 
 module.exports = router;

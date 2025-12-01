@@ -57,6 +57,31 @@ GROUP BY k.id;
       throw err;
     }
   }
+
+  static async addCategory(kategori_adi, aciklama) {
+    try {
+      const result = await db.query(
+        "INSERT INTO kategoriler (kategori_adi, aciklama) VALUES (?, ?)",
+        [kategori_adi, aciklama]
+      );
+      return result;
+    } catch (err) {
+      console.error("Category.addCategory hata:", err);
+      throw err;
+    }
+  }
+
+  static async deleteCategory(id) {
+    try {
+      const result = await db.query("DELETE FROM kategoriler WHERE id = ?", [
+        id,
+      ]);
+      return result;
+    } catch (err) {
+      console.log("Category.deleteCategory hata:", err);
+      throw err;
+    }
+  }
 }
 
 module.exports = Category;
