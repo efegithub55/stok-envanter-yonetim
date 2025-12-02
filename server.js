@@ -34,6 +34,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  res.locals.alert = req.session.alert || null;
+  req.session.alert = null;
+  next();
+});
+
 app.use(async (req, res, next) => {
   req.user = null;
   res.locals.user = null;

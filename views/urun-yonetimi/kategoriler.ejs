@@ -5,6 +5,8 @@
   <body class="light" style="display: flex">
     <!-- Sidebar -->
     <%- include("../../components/Sidebar", { active: "kategoriler" }) %>
+    <!-- Sidebar -->
+    <%- include("../../components/Alert") %>
     <!-- Main -->
     <main id="dashboard-main">
       <div class="products-header">
@@ -47,7 +49,7 @@
         </div>
         <div class="category-flex-item">
           <div class="col">
-            <h4><%= mostMovement.kategori_adi %></h4>
+            <h4><%= mostMovement ? mostMovement.kategori_adi : '-' %></h4>
             <p>En Popüler</p>
           </div>
           <div class="col">
@@ -56,7 +58,7 @@
         </div>
         <div class="category-flex-item">
           <div class="col">
-            <h4><%= lastAdded.kategori_adi %></h4>
+            <h4><%= lastAdded ? lastAdded.kategori_adi : '-' %></h4>
             <p>Son Eklenen</p>
           </div>
           <div class="col">
