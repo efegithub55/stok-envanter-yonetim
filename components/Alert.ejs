@@ -1,0 +1,16 @@
+<% if (alert) { %>
+<div class="alertbox <%= alert.type %>">
+  <div class="alertbox-icon">
+    <span
+      class="bxr bx-<%= alert.type == 'success' ? 'check' : alert.type == 'danger' ? 'alert-triangle' : 'info-square' %>"
+    ></span>
+  </div>
+  <div class="alertbox-content"><%= alert.message %></div>
+</div>
+<script>
+  var alertbox = document.querySelector(".alertbox");
+  setInterval(() => {
+    alertbox.classList.add("alert-hidden");
+  }, 3000);
+</script>
+<% } %>

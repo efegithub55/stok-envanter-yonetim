@@ -7,6 +7,8 @@
     Array.isArray(selectedStock) ? selectedStock.map(String) : []; %>
     <!-- Sidebar -->
     <%- include("../../components/Sidebar", { active: "urunler" }) %>
+    <!-- Alert -->
+    <%- include("../../components/Alert") %>
     <!-- Main -->
     <form action="/urun-yonetimi/urunler" method="get" class="form">
       <main id="dashboard-main">

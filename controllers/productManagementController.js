@@ -162,6 +162,10 @@ exports.postAddCategory = async (req, res) => {
 exports.getDeleteCategory = async (req, res) => {
   const id = req.params.id;
   await Category.deleteCategory(id);
+  req.session.alert = {
+    type: "success",
+    message: "Kategori silme işlemi başarılı",
+  };
   res.redirect("/urun-yonetimi/kategoriler");
 };
 
