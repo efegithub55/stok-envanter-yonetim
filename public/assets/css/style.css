@@ -1182,7 +1182,6 @@ button.loading .spinner {
 .table-section {
   border: 1px solid var(--gray-1);
   border-radius: 6px;
-  overflow: hidden;
   overflow-x: auto;
 }
 
@@ -1190,6 +1189,22 @@ table {
   width: 100%;
   border-radius: 6px;
   border-collapse: collapse;
+  overflow: hidden;
+}
+
+.table-section,
+.table-view,
+table,
+tbody,
+tr,
+td {
+  overflow: visible !important;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow: visible;
 }
 
 thead {
@@ -1338,24 +1353,68 @@ td .col p {
   font-size: 0.75rem;
 }
 
-.act-btn {
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  outline: 0;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  color: var(--gray-11);
-  font-size: 1rem;
-  transition: all 0.1s;
+.action-container {
+  position: relative;
+  display: inline-block;
 }
 
-.act-btn:hover {
-  background: var(--gray-1);
-  color: var(--gray-12);
+.act-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  font-size: 18px;
+}
+
+.action-bar {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 9999;
+  min-width: 80px;
+  overflow: hidden;
+}
+
+/* Yukarı açılması gerektiğinde */
+.action-bar.open-up {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
+/* Menü içerikleri */
+.action-bar a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+}
+.action-bar a:hover {
+  background: #f5f5f5;
+}
+
+.action-bar .delete-btn {
+  background: rgb(255, 73, 73);
+  color: var(--gray-1);
+}
+
+.action-bar .delete-btn:hover {
+  background: rgb(237, 0, 0);
+}
+
+.action-bar .edit-btn {
+  background: rgb(73, 121, 255);
+  color: var(--gray-1);
+}
+
+.action-bar .edit-btn:hover {
+  background: rgb(38, 96, 255);
 }
 
 .filter-dd-content {

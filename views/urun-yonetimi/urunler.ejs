@@ -488,43 +488,48 @@
         </div>
         <!-- Tablo Görünümü -->
         <div class="table-section table-view">
-          <table>
-            <thead>
-              <tr>
-                <th class="checkbox-cell">
-                  <input type="checkbox" class="select-all" />
-                </th>
-                <th>Resim</th>
-                <th class="sortable">
-                  <p>
-                    Ürün Bilgileri <span class="bxr bx-chevrons-up-down"></span>
-                  </p>
-                </th>
-                <th class="sortable">
-                  <p>Kategori <span class="bxr bx-chevrons-up-down"></span></p>
-                </th>
-                <th class="sortable">
-                  <p>Stok <span class="bxr bx-chevrons-up-down"></span></p>
-                </th>
-                <th class="sortable">
-                  <p>
-                    Birim Fiyat <span class="bxr bx-chevrons-up-down"></span>
-                  </p>
-                </th>
-                <th class="sortable">
-                  <p>
-                    Toplam Değer <span class="bxr bx-chevrons-up-down"></span>
-                  </p>
-                </th>
-                <th>Durum</th>
-                <th>İşlemler</th>
-              </tr>
-            </thead>
-            <tbody id="products-tbody">
-              <%- include("../urun-yonetimi/partials/productRows", { products })
-              %>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="checkbox-cell">
+                    <input type="checkbox" class="select-all" />
+                  </th>
+                  <th>Resim</th>
+                  <th class="sortable">
+                    <p>
+                      Ürün Bilgileri
+                      <span class="bxr bx-chevrons-up-down"></span>
+                    </p>
+                  </th>
+                  <th class="sortable">
+                    <p>
+                      Kategori <span class="bxr bx-chevrons-up-down"></span>
+                    </p>
+                  </th>
+                  <th class="sortable">
+                    <p>Stok <span class="bxr bx-chevrons-up-down"></span></p>
+                  </th>
+                  <th class="sortable">
+                    <p>
+                      Birim Fiyat <span class="bxr bx-chevrons-up-down"></span>
+                    </p>
+                  </th>
+                  <th class="sortable">
+                    <p>
+                      Toplam Değer <span class="bxr bx-chevrons-up-down"></span>
+                    </p>
+                  </th>
+                  <th>Durum</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="products-tbody">
+                <%- include("../urun-yonetimi/partials/productRows", { products
+                }) %>
+              </tbody>
+            </table>
+          </div>
         </div>
         <!-- Grid Görünümü -->
         <div class="grid-view hidden">
@@ -654,5 +659,6 @@
     <script src="/assets/js/generateColorFromStr.js"></script>
     <script src="/assets/js/vibrate.js"></script>
     <script src="/assets/js/selectAll.js"></script>
+    <script src="/assets/js/actionBar.js"></script>
   </body>
 </html>

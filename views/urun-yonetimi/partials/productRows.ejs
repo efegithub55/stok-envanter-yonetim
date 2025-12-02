@@ -43,10 +43,17 @@
       class="circle circle-<%= item.mevcut_stok <= item.min_stok / 2 ? 'danger' : item.mevcut_stok <= item.min_stok ? 'warning' : 'success' %>"
     ></div>
   </td>
-  <td class="actions-cell">
-    <button class="act-btn">
-      <span class="bxr bxs-dots-vertical"></span>
-    </button>
+  <td>
+    <div class="action-container">
+      <button type="button" class="act-btn">
+        <span class="bxr bxs-dots-vertical"></span>
+      </button>
+
+      <div class="action-bar">
+        <a href="#" class="edit-btn"><span class="bxr bx-edit-alt"></span></a>
+        <a href="#" class="delete-btn"><span class="bxr bx-trash"></span></a>
+      </div>
+    </div>
   </td>
 </tr>
 <% }) %>
