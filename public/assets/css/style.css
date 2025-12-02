@@ -1116,13 +1116,13 @@ button.loading .spinner {
   font-size: 0.9rem;
   color: var(--gray-12);
   position: relative;
-  border: 2px solid var(--gray-3);
+  border: 1px solid var(--gray-3);
   cursor: pointer;
   transition: all 0.1s;
 }
 
 .filter-dropdown:hover {
-  border: 2px solid var(--blue-6);
+  border: 1px solid var(--blue-6);
 }
 
 .filter-dd-title {
@@ -1378,6 +1378,13 @@ td .col p {
   z-index: 9999;
   min-width: 80px;
   overflow: hidden;
+  animation: actBar 0.2s ease-in-out;
+}
+
+@keyframes actBar {
+  0% {
+    transform: translateY(10px);
+  }
 }
 
 /* Yukarı açılması gerektiğinde */
@@ -3746,4 +3753,27 @@ form.form {
 .alertbox.success::after {
   content: "";
   background: var(--success-text);
+}
+
+.edit-buttons {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+}
+
+.edit-buttons button {
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.cancel-btn {
+  background: #f04a4a;
+  color: white;
 }
