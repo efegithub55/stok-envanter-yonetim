@@ -491,7 +491,9 @@
           <table>
             <thead>
               <tr>
-                <th class="checkbox-cell"><input type="checkbox" /></th>
+                <th class="checkbox-cell">
+                  <input type="checkbox" class="select-all" />
+                </th>
                 <th>Resim</th>
                 <th class="sortable">
                   <p>
@@ -530,7 +532,9 @@
             <% products.map((item) => { %>
             <div class="product-item">
               <div class="quick-actions">
-                <div class="checkbox"><input type="checkbox" /></div>
+                <div class="checkbox">
+                  <input type="checkbox" class="select-checkbox" />
+                </div>
                 <div class="pr-actions">
                   <div class="act-btn">
                     <span class="bxr bx-edit-alt"></span>
@@ -649,5 +653,6 @@
     <script src="/assets/js/viewChanger.js"></script>
     <script src="/assets/js/generateColorFromStr.js"></script>
     <script src="/assets/js/vibrate.js"></script>
+    <script src="/assets/js/selectAll.js"></script>
   </body>
 </html>
