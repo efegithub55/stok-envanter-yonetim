@@ -17,11 +17,11 @@ function calculate() {
   if (isNaN(alis) || isNaN(satis) || isNaN(kdv) || isNaN(mevcut_stok)) return;
 
   const kdv_maliyeti = (satis * kdv) / 100;
-  const kar = satis - alis - kdv_maliyeti;
-  const marj = ((kar / alis) * 100).toFixed(2);
+  const gercek_kar = satis - alis - kdv_maliyeti;
+  const marj = ((gercek_kar / alis) * 100).toFixed(2);
 
   kar_marji.textContent = `%${marj}`;
-  birim_kar.textContent = `${(satis - alis).toFixed(2)}₺`;
+  birim_kar.textContent = `${gercek_kar.toFixed(2)}₺`;
   envanter_deger.textContent = `${(mevcut_stok * alis).toLocaleString()}₺`;
 }
 
