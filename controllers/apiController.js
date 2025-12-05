@@ -37,3 +37,20 @@ exports.getCategories = async (req, res) => {
     return res.status(500).json({ error: "Sunucu hatası" });
   }
 };
+
+exports.getCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await Category.getCategory(id);
+    if (!data) {
+      req.session.alert = {
+        type: "danger",
+        message: "Kategori bulunamadı",
+      };
+    }
+    return res.json(data);
+  } catch (err) {
+    console.error("getCategory hata: ", err);
+    return res.redirect("/urun-yonetimi/kategoriler");
+  }
+};

@@ -26,5 +26,9 @@ router.get(
   "/kategoriler/sil/:id",
   productManagementController.getDeleteCategory
 );
+router.post(
+  "/kategoriler/duzenle/:id",
+  productManagementController.editCategory
+);
 
 module.exports = router;

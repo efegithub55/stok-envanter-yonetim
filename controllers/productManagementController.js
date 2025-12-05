@@ -254,6 +254,22 @@ exports.getDeleteCategory = async (req, res) => {
   res.redirect("/urun-yonetimi/kategoriler");
 };
 
+exports.editCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { kategori_adi, aciklama } = req.body;
+    await Category.updateCategory(id, { kategori_adi, aciklama });
+    req.session.alert = {
+      type: "success",
+      message: "Kategori düzenleme işlemi başarılı",
+    };
+    res.redirect("/urun-yonetimi/kategoriler");
+  } catch (err) {
+    console.error("editCategory hata: ", err);
+    res.redirect("/urun-yonetimi/kategoriler");
+  }
+};
+
 exports.ajaxSearchProducts = async (req, res) => {
   try {
     const page = req.query.page || 1;
