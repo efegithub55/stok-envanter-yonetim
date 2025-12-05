@@ -2265,10 +2265,9 @@ select:hover {
   font-size: 1.1rem;
   color: var(--blue-12);
   width: 150px;
-  border: 1px solid red;
-  white-space: nowrap; /* satır kırılmasın */
-  overflow: hidden; /* taşanı gizle */
-  text-overflow: ellipsis; /* ... ekle */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .category-flex-item .col p {
