@@ -70,12 +70,14 @@
         <% categories.forEach((ctg) => { %>
         <div class="category-box" data-label="<%= ctg.kategori_adi %>">
           <div class="category-actions">
-            <a href="" class="action-btn"
+            <a
+              class="btn btn-primary edit-category-btn"
+              data-category-id="<%= ctg.id %>"
               ><span class="bxr bx-edit-alt"></span
             ></a>
             <a
               href="/urun-yonetimi/kategoriler/sil/<%= ctg.id %>"
-              class="action-btn delete"
+              class="btn btn-danger"
               ><span class="bxr bx-trash"></span
             ></a>
           </div>
@@ -104,5 +106,6 @@
     <!-- Scripts -->
     <script src="/assets/js/generateColorFromStr.js"></script>
     <script src="/assets/js/modals/addCategory.js"></script>
+    <script src="/assets/js/modals/editCategory.js"></script>
   </body>
 </html>

@@ -82,6 +82,40 @@ GROUP BY k.id;
       throw err;
     }
   }
+
+  static async getCategory(id) {
+    try {
+      const [[row]] = await db.query("SELECT * FROM kategoriler WHERE id = ?", [
+        id,
+      ]);
+      return row;
+    } catch (err) {
+      console.error("Category.getCategory hata:", err);
+      throw err;
+    }
+  }
+
+  static async updateCategory(id, data) {
+    try {
+      const fields = [];
+      const values = [];
+
+      Object.entries(data).forEach(([key, value]) => {
+        fields.push(`${key} = ?`);
+        values.push(value);
+      });
+      if (fields.length === 0) {
+        throw new Error("Güncellenecek alan yok");
+      }
+      values.push(id);
+      const sql = `UPDATE kategoriler SET ${fields.join(", ")} WHERE id = ?`;
+      const [result] = await db.query(sql, values);
+      return result;
+    } catch (err) {
+      console.error("Category.editCategory hata: ", err);
+      throw err;
+    }
+  }
 }
 
 module.exports = Category;

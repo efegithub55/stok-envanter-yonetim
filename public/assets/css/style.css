@@ -2264,6 +2264,11 @@ select:hover {
 .category-flex-item .col h4 {
   font-size: 1.1rem;
   color: var(--blue-12);
+  width: 150px;
+  border: 1px solid red;
+  white-space: nowrap; /* satır kırılmasın */
+  overflow: hidden; /* taşanı gizle */
+  text-overflow: ellipsis; /* ... ekle */
 }
 
 .category-flex-item .col p {
@@ -2273,7 +2278,7 @@ select:hover {
 
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 15px;
 }
 
