@@ -1109,6 +1109,17 @@ button.loading .spinner {
   box-shadow: 0 4px 10px -5px #c01b1b;
 }
 
+.btn-success {
+  background: #2daf3c;
+  color: #fff;
+  outline: 0;
+}
+
+.btn-success:hover {
+  background: #1bc02c;
+  box-shadow: 0 4px 10px -5px #29c01b;
+}
+
 .filter-dropdown {
   padding: 8px 12px;
   width: fit-content;
@@ -2636,6 +2647,10 @@ select:hover {
   }
 }
 
+.product-wrapper {
+  position: relative;
+}
+
 .product-box {
   padding: 20px;
   border-radius: 10px;
@@ -2645,6 +2660,8 @@ select:hover {
   flex-direction: column;
   gap: 10px;
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .product-box.danger {
@@ -3785,4 +3802,32 @@ form.form {
   color: var(--blue-a7);
   font-weight: 400;
   font-size: 1rem;
+}
+
+/**/
+
+.stock-action-bar {
+  width: 100%;
+  animation: stockActBar 0.2s;
+}
+
+@keyframes stockActBar {
+  0% {
+    opacity: 0;
+  }
+}
+
+.stock form {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 10px;
+}
+
+.stock form input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid var(--gray-2);
 }

@@ -109,6 +109,42 @@ exports.getStockStatusAjax = async (req, res) => {
   }
 };
 
+exports.postStockStatAdd = async (req, res) => {
+  const { stok_ekle } = req.body;
+  const id = req.params.id;
+  const result = await Product.addStock(id, stok_ekle);
+  if (result) {
+    req.session.alert = {
+      type: "success",
+      message: "Stok girişi işlemi başarılı",
+    };
+  } else {
+    req.session.alert = {
+      type: "danger",
+      message: "Stok girişi işlemi başarısız",
+    };
+  }
+  res.redirect("/stok-islemleri/stok-durumu");
+};
+
+exports.postStockStatDecrease = async (req, res) => {
+  const { stok_cikar } = req.body;
+  const id = req.params.id;
+  const result = await Product.decreaseStock(id, stok_cikar);
+  if (result) {
+    req.session.alert = {
+      type: "success",
+      message: "Stok çıkışı işlemi başarılı",
+    };
+  } else {
+    req.session.alert = {
+      type: "danger",
+      message: "Stok çıkışı işlemi başarısız",
+    };
+  }
+  res.redirect("/stok-islemleri/stok-durumu");
+};
+
 exports.getStockAdd = (req, res) => {
   res.render("stok-islemleri/stok-girisi");
 };

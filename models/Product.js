@@ -385,6 +385,28 @@ class Product {
     const [rows] = await db.query(sql, params);
     return rows;
   }
+
+  static async addStock(id, count) {
+    try {
+      const sql = `UPDATE urunler SET mevcut_stok = mevcut_stok + ? WHERE id = ?`;
+      const result = await db.query(sql, [count, id]);
+      return result;
+    } catch (err) {
+      console.error("Product.addStock hata: ", err);
+      throw err;
+    }
+  }
+
+  static async decreaseStock(id, count) {
+    try {
+      const sql = `UPDATE urunler SET mevcut_stok = mevcut_stok - ? WHERE id = ?`;
+      const result = await db.query(sql, [count, id]);
+      return result;
+    } catch (err) {
+      console.error("Product.decreaseStock hata: ", err);
+      throw err;
+    }
+  }
 }
 
 module.exports = Product;

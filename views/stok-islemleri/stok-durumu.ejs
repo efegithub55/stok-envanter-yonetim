@@ -5,7 +5,8 @@
   <body class="light" style="display: flex">
     <!-- Sidebar -->
     <%- include("../../components/Sidebar", { active: "stok-durumu" }) %>
-
+    <!-- Alert -->
+    <%- include("../../components/Alert") %>
     <!-- Main -->
     <main id="dashboard-main">
       <div class="dash-header">
@@ -195,5 +196,92 @@
 
     <!-- Scripts -->
     <script src="/assets/js/stockTabs.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("click", (e) => {
+      // STOK EKLE butonu
+      const addBtn = e.target.closest(".add-stock");
+      if (addBtn) {
+        e.preventDefault();
+
+        const row = addBtn.closest(".stock");
+        if (!row) return;
+
+        const btnAdd = row.querySelector(".add-stock");
+        const btnRemove = row.querySelector(".remove-stock");
+        const actionBar = row.querySelector(".stock-action-bar");
+        const addForm = row.querySelector(".stock-add-form");
+        const removeForm = row.querySelector(".stock-remove-form");
+
+        btnAdd.classList.add("hidden");
+        btnRemove.classList.add("hidden");
+
+        actionBar.classList.remove("hidden");
+        addForm.classList.remove("hidden");
+        removeForm.classList.add("hidden");
+
+        const input = addForm.querySelector('input[name="stok_ekle"]');
+        if (input) input.focus();
+
+        return;
+      }
+
+      // STOK ÇIKAR butonu
+      const removeBtn = e.target.closest(".remove-stock");
+      if (removeBtn) {
+        e.preventDefault();
+
+        const row = removeBtn.closest(".stock");
+        if (!row) return;
+
+        const btnAdd = row.querySelector(".add-stock");
+        const btnRemove = row.querySelector(".remove-stock");
+        const actionBar = row.querySelector(".stock-action-bar");
+        const addForm = row.querySelector(".stock-add-form");
+        const removeForm = row.querySelector(".stock-remove-form");
+
+        btnAdd.classList.add("hidden");
+        btnRemove.classList.add("hidden");
+
+        actionBar.classList.remove("hidden");
+        removeForm.classList.remove("hidden");
+        addForm.classList.add("hidden");
+
+        const input = removeForm.querySelector('input[name="stok_cikar"]');
+        if (input) input.focus();
+
+        return;
+      }
+
+      // İPTAL butonu
+      const cancelBtn = e.target.closest(".stock-action-bar .cancel");
+      if (cancelBtn) {
+        e.preventDefault();
+
+        const row = cancelBtn.closest(".stock");
+        if (!row) return;
+
+        const btnAdd = row.querySelector(".add-stock");
+        const btnRemove = row.querySelector(".remove-stock");
+        const actionBar = row.querySelector(".stock-action-bar");
+        const addForm = row.querySelector(".stock-add-form");
+        const removeForm = row.querySelector(".stock-remove-form");
+
+        // inputları temizle
+        const addInput = addForm.querySelector('input[name="stok_ekle"]');
+        const removeInput = removeForm.querySelector('input[name="stok_cikar"]');
+        if (addInput) addInput.value = "";
+        if (removeInput) removeInput.value = "";
+
+        // bar gizle, butonları geri göster
+        actionBar.classList.add("hidden");
+        btnAdd.classList.remove("hidden");
+        btnRemove.classList.remove("hidden");
+
+        return;
+      }
+    });
+  });
+</script>
   </body>
 </html>

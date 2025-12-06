@@ -4,81 +4,107 @@
 </div>
 <% } else { %> <% items.forEach(function (item) { const isCritical =
 item.mevcut_stok <= item.min_stok / 2; const isLow = !isCritical &&
-item.mevcut_stok <= item.min_stok; const levelClass = isCritical ? 'danger' :
-(isLow ? 'warning' : 'success'); const pinClass = isCritical ? 'danger' : (isLow
-? 'warn' : 'success'); const circleClass = isCritical ? 'danger' : (isLow ?
-'warning' : 'success'); const levelText = isCritical ? 'Kritik' : (isLow ?
-'Düşük' : 'Yeterli'); const stockRatio = item.max_stok > 0 ? (item.mevcut_stok /
+item.mevcut_stok <= item.min_stok; const levelClass = isCritical ? "danger" :
+(isLow ? "warning" : "success"); const pinClass = isCritical ? "danger" : (isLow
+? "warn" : "success"); const circleClass = isCritical ? "danger" : (isLow ?
+"warning" : "success"); const levelText = isCritical ? "Kritik" : (isLow ?
+"Düşük" : "Yeterli"); const stockRatio = item.max_stok > 0 ? (item.mevcut_stok /
 item.max_stok) * 100 : 0; const miktarFazlaMi = item.mevcut_stok >
-item.max_stok; const miktarLabel = miktarFazlaMi ? 'Fazla' : 'Eksik'; const
-miktarClass = miktarFazlaMi ? 'success' : 'danger'; const miktarDeger =
-miktarFazlaMi ? '+' + (item.mevcut_stok - item.max_stok) : '-' + (item.max_stok
+item.max_stok; const miktarLabel = miktarFazlaMi ? "Fazla" : "Eksik"; const
+miktarClass = miktarFazlaMi ? "success" : "danger"; const miktarDeger =
+miktarFazlaMi ? "+" + (item.mevcut_stok - item.max_stok) : "-" + (item.max_stok
 - item.mevcut_stok); const kategori = categories.find(c => c.id ===
-item.kategori_id); const kategoriAdi = kategori ? kategori.kategori_adi : '';
+item.kategori_id); const kategoriAdi = kategori ? kategori.kategori_adi : "";
 const lastEntry = lastEntries && lastEntries[item.id] ?
-lastEntries[item.id].relative_time : '-'; %>
-<div class="product-box <%= levelClass %>">
-  <div class="row">
-    <div class="col">
-      <h4><%= item.urun_adi %></h4>
-      <p><%= kategoriAdi %> • #<%= item.sku %></p>
-    </div>
-    <div class="col">
-      <div class="stat-pin <%= pinClass %>">
-        <div class="circle circle-<%= circleClass %>"></div>
-        <%= levelText %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row flex-column">
+lastEntries[item.id].relative_time : "-"; %>
+<div class="product-wrapper">
+  <div class="product-box <%= levelClass %>">
     <div class="row">
-      <div class="col"><%= item.mevcut_stok %> Adet</div>
       <div class="col">
-        <i>Min: <%= item.min_stok %> - Max: <%= item.max_stok %></i>
+        <h4><%= item.urun_adi %></h4>
+        <p><%= kategoriAdi %> • #<%= item.sku %></p>
+      </div>
+      <div class="col">
+        <div class="stat-pin <%= pinClass %>">
+          <div class="circle circle-<%= circleClass %>"></div>
+          <%= levelText %>
+        </div>
       </div>
     </div>
+
+    <div class="row flex-column">
+      <div class="row">
+        <div class="col"><%= item.mevcut_stok %> Adet</div>
+        <div class="col">
+          <i>Min: <%= item.min_stok %> - Max: <%= item.max_stok %></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="progress-bar">
+          <div
+            class="progress <%= levelClass %>"
+            style="width: <%= stockRatio %>%"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-divider"></div>
+
     <div class="row">
-      <div class="progress-bar">
-        <div
-          class="progress <%= levelClass %>"
-          style="width: <%= stockRatio %>%"
-        ></div>
+      <div class="col">
+        <h5>Birim Fiyat</h5>
+        <h6>₺<%= item.alis_fiyati.toLocaleString() %></h6>
+      </div>
+      <div class="col w-100px">
+        <h5>Toplam Değer</h5>
+        <h6>₺<%= (item.mevcut_stok * item.alis_fiyati).toLocaleString() %></h6>
       </div>
     </div>
-  </div>
 
-  <div class="product-divider"></div>
+    <div class="row">
+      <div class="col">
+        <h5>Son Giriş</h5>
+        <h6><%= lastEntry %></h6>
+      </div>
+      <div class="col w-100px">
+        <h5 data-label="<%= miktarLabel %>">&nbsp;Miktar</h5>
+        <h6 class="<%= miktarClass %>"><%= miktarDeger %> Adet</h6>
+      </div>
+    </div>
 
-  <div class="row">
-    <div class="col">
-      <h5>Birim Fiyat</h5>
-      <h6>₺<%= item.alis_fiyati.toLocaleString() %></h6>
-    </div>
-    <div class="col w-100px">
-      <h5>Toplam Değer</h5>
-      <h6>₺<%= (item.mevcut_stok * item.alis_fiyati).toLocaleString() %></h6>
-    </div>
-  </div>
+    <div class="row stock">
+      <a href="#" class="btn btn-primary add-stock">
+        <span class="bxr bx-arrow-in-down-square-half"></span>Stok Ekle
+      </a>
+      <a href="#" class="btn btn-danger remove-stock">
+        <span class="bxr bx-arrow-out-up-square-half"></span>Stok Çıkar
+      </a>
 
-  <div class="row">
-    <div class="col">
-      <h5>Son Giriş</h5>
-      <h6><%= lastEntry %></h6>
-    </div>
-    <div class="col w-100px">
-      <h5 data-label="<%= miktarLabel %>">&nbsp;Miktar</h5>
-      <h6 class="<%= miktarClass %>"><%= miktarDeger %> Adet</h6>
-    </div>
-  </div>
+      <div class="stock-action-bar hidden">
+        <div class="stock-add-form">
+          <form
+            action="/stok-islemleri/stok-durumu/stok-ekle/<%= item.id %>"
+            method="post"
+          >
+            <input type="number" name="stok_ekle" />
+            <button type="submit" class="btn btn-success">Ekle</button>
+            <a href="#" class="btn btn-primary cancel">İptal</a>
+          </form>
+        </div>
 
-  <div class="row">
-    <a href="" class="btn btn-primary">
-      <span class="bxr bx-arrow-in-down-square-half"></span>Stok Ekle
-    </a>
-    <a href="" class="btn btn-danger">
-      <span class="bxr bx-arrow-out-up-square-half"></span>Stok Çıkar
-    </a>
+        <div class="stock-remove-form">
+          <form
+            action="/stok-islemleri/stok-durumu/stok-sil/<%= item.id %>"
+            method="post"
+          >
+            <input type="number" name="stok_cikar" />
+            <button type="submit" class="btn btn-danger">Çıkar</button>
+            <a href="#" class="btn btn-primary cancel">İptal</a>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <% }) %> <% } %>
