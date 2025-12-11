@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!labels.length || !values.length) {
     el.innerHTML =
-      "<p class='op-text'>Bu tarih aralığında satış verisi yok.</p>";
+      "<div class='no-data'><img src='/assets/svg/no_data.svg' /></div>";
     return;
   }
 

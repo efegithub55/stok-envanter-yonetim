@@ -85,7 +85,6 @@
                       </div>
                       <div class="dd-divider"></div>
                       <div class="dd-actions">
-                        <a href="" class="btn">İptal</a>
                         <a
                           href=""
                           class="btn btn-primary"
@@ -175,7 +174,6 @@
                       </div>
                       <div class="dd-divider"></div>
                       <div class="dd-actions">
-                        <a href="" class="btn">İptal</a>
                         <a
                           href=""
                           class="btn btn-primary"
@@ -195,7 +193,10 @@
                     <div class="dd-container">
                       <div class="dd-header">
                         <h5>Fiyat Aralığı</h5>
-                        <a href="">Sıfırla</a>
+                        <a
+                          onclick="event.preventDefault(); this.closest('form').reset();"
+                          >Sıfırla</a
+                        >
                       </div>
                       <div class="inp-row">
                         <div class="input">
@@ -256,7 +257,6 @@
                       </div>
                       <div class="dd-divider"></div>
                       <div class="dd-actions">
-                        <a href="" class="btn">İptal</a>
                         <a
                           href=""
                           class="btn btn-primary"
@@ -536,7 +536,7 @@
             <% products.map((item) => { %>
             <div class="product-item">
               <div class="product-image">
-                <img src="<%= item.resim_url %>" />
+                <img src="/assets/products/<%= item.resim_url %>" />
               </div>
               <div class="product-content">
                 <a href=""><%= item.urun_adi %></a>
@@ -602,7 +602,7 @@
                 <td class="checkbox-cell"><input type="checkbox" /></td>
                 <td>
                   <div class="table-image">
-                    <img src="<%= item.resim_url %>" alt="" />
+                    <img src="/assets/products/<%= item.resim_url %>" alt="" />
                   </div>
                 </td>
                 <td>

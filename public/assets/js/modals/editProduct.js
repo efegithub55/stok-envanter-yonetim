@@ -42,10 +42,6 @@ buttons.forEach((btn) => {
               </select>
             </div>
             <div class='modal-inp-row'>
-              <label for='mevcut_stok'>Mevcut stok</label>
-              <input type='text' name='mevcut_stok' value='${data.mevcut_stok}' required placeholder='' />
-            </div>
-            <div class='modal-inp-row'>
               <label for='alis_fiyati'>Alış fiyatı</label>
               <input type='text' name='alis_fiyati' value='${data.alis_fiyati}' required placeholder='' />
             </div>

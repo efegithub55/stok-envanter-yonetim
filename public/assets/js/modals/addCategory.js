@@ -14,7 +14,7 @@ btn.addEventListener("click", () => {
               <input type='text' placeholder='' name='kategori_adi' />
             </div>
             <div class='modal-inp-row'>
-              <label for='aciklama'>Kategori Adı</label>
+              <label for='aciklama'>Kategori Açıklaması</label>
               <textarea placeholder='' name='aciklama' /></textarea>
             </div>
             <button type='submit' class='btn btn-primary center'>Ekle</button>

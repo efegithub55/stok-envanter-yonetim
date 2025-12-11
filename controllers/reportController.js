@@ -580,8 +580,6 @@ exports.postCreateReportFromTemplate = async (req, res, next) => {
       olusturan_id: userId,
     });
 
-    console.log("Rapor oluşturuldu, id:", reportId);
-
     return res.download(filePath, fileName);
   } catch (err) {
     console.error("postCreateReportFromTemplate hata:", err);

@@ -273,8 +273,8 @@ class Product {
       (urun_adi, kategori_id, barkod, sku, aciklama, resim_url,
        mevcut_stok, min_stok, max_stok, birim_id, alis_fiyati,
        satis_fiyati, kdv, tedarikci, raf_konumu, garanti,
-       son_kullanma_tarihi, urun_link, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       son_kullanma_tarihi, urun_link)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
     const values = [
@@ -296,7 +296,6 @@ class Product {
       data.garanti,
       data.son_kullanma_tarihi,
       data.urun_link,
-      data.created_at,
     ];
 
     return db.query(sql, values);

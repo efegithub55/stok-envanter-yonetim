@@ -1,10 +1,11 @@
 const mysql = require("mysql2/promise");
+require("dotenv").config();
 
 const pool = mysql.createPool({
-  user: "root",
-  password: "",
-  database: "invento_db",
-  host: "localhost",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
 });
 
 module.exports = pool;

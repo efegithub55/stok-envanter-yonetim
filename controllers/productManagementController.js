@@ -97,11 +97,9 @@ exports.postAddProduct = async (req, res) => {
     const { file } = req;
     const body = req.body;
 
-    // Dosya geldiyse resim_url oluştur
     let resim_url = null;
     if (file) {
-      // Örn: /uploads/products/product-123123123.jpg
-      resim_url = `/assets/products/${file.filename}`;
+      resim_url = `${file.filename}`;
     }
 
     const data = {
@@ -136,20 +134,12 @@ exports.postAddProduct = async (req, res) => {
 
 exports.postEditProduct = async (req, res) => {
   try {
-    const {
-      urun_adi,
-      sku,
-      kategori_id,
-      mevcut_stok,
-      alis_fiyati,
-      satis_fiyati,
-    } = req.body;
+    const { urun_adi, sku, kategori_id, alis_fiyati, satis_fiyati } = req.body;
     const id = req.params.id;
     await Product.updateProduct(id, {
       urun_adi,
       sku,
       kategori_id,
-      mevcut_stok,
       alis_fiyati,
       satis_fiyati,
     });
@@ -303,7 +293,6 @@ exports.ajaxSearchProducts = async (req, res) => {
       productSearch
     );
 
-    // Sadece satırları render eden partial oluşturalım
     res.render(
       "urun-yonetimi/partials/productRows",
       { products },

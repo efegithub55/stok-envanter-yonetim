@@ -14,14 +14,6 @@
           <h2>Raporlar</h2>
           <p>Detaylı analiz ve raporlar oluşturun</p>
         </div>
-        <div class="col flex-row">
-          <a href="" class="btn">
-            <span class="bxr bx-cog"></span>Rapor Ayarları
-          </a>
-          <a href="" class="btn btn-primary">
-            <span class="bxr bx-plus"></span>Özel Rapor Oluştur
-          </a>
-        </div>
       </div>
 
       <div class="dash-divider"></div>
@@ -57,7 +49,7 @@
           >
         </div>
         <div class="col">
-          <form action="/raporlar/raporlar" method="get">
+          <form action="/raporlar" method="get">
             <div class="form-input">
               <input type="date" name="start" value="<%= startDate %>" /> -
               <input type="date" name="end" value="<%= endDate %>" />

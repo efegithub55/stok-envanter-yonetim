@@ -37,6 +37,7 @@
 
       <!-- Üst istatistik kartları -->
       <div class="stats-grid">
+  <!-- KRİTİK STOK -->
   <div class="stat-card danger">
     <div class="row">
       <div class="col"><div class="status danger"></div></div>
@@ -46,16 +47,22 @@
       <p>Kritik Stok</p>
     </div>
     <div class="row">
-      <!-- GLOBAL KRİTİK SAYI -->
       <h4><%= criticalCount %></h4>
     </div>
     <div class="row">
-      <div class="trend-bar success">
-        <span class="bxr bx-arrow-up-stroke"></span>+5 bu hafta
+      <% const crit = trends && trends.critical ? trends.critical : 0; %>
+      <div
+        class="trend-bar <%= crit <= 0 ? 'success' : 'danger' %>"
+      >
+        <span
+          class="bxr bx-arrow-<%= crit <= 0 ? 'down-stroke' : 'up-stroke' %>"
+        ></span>
+        <%= crit > 0 ? '+' : '' %><%= crit || 0 %> bu hafta
       </div>
     </div>
   </div>
 
+  <!-- DÜŞÜK STOK -->
   <div class="stat-card warn">
     <div class="row">
       <div class="col"><div class="status warn"></div></div>
@@ -65,16 +72,22 @@
       <p>Düşük Stok</p>
     </div>
     <div class="row">
-      <!-- GLOBAL DÜŞÜK SAYI -->
       <h4><%= lowCount %></h4>
     </div>
     <div class="row">
-      <div class="trend-bar danger">
-        <span class="bxr bx-arrow-down-stroke"></span>-12 bu hafta
+      <% const low = trends && trends.low ? trends.low : 0; %>
+      <div
+        class="trend-bar <%= low <= 0 ? 'success' : 'danger' %>"
+      >
+        <span
+          class="bxr bx-arrow-<%= low <= 0 ? 'down-stroke' : 'up-stroke' %>"
+        ></span>
+        <%= low > 0 ? '+' : '' %><%= low || 0 %> bu hafta
       </div>
     </div>
   </div>
 
+  <!-- NORMAL STOK -->
   <div class="stat-card success">
     <div class="row">
       <div class="col"><div class="status success"></div></div>
@@ -84,16 +97,22 @@
       <p>Yeterli Stok</p>
     </div>
     <div class="row">
-      <!-- GLOBAL NORMAL SAYI -->
       <h4><%= normalCount %></h4>
     </div>
     <div class="row">
-      <div class="trend-bar success">
-        <span class="bxr bx-arrow-up-stroke"></span>+28 bu hafta
+      <% const norm = trends && trends.normal ? trends.normal : 0; %>
+      <div
+        class="trend-bar <%= norm >= 0 ? 'success' : 'danger' %>"
+      >
+        <span
+          class="bxr bx-arrow-<%= norm >= 0 ? 'up-stroke' : 'down-stroke' %>"
+        ></span>
+        <%= norm > 0 ? '+' : '' %><%= norm || 0 %> bu hafta
       </div>
     </div>
   </div>
 
+  <!-- TOPLAM STOK DEĞERİ -->
   <div class="stat-card">
     <div class="row">
       <div class="col"><span class="bxr bx-dollar-circle"></span></div>
@@ -102,16 +121,24 @@
       <p>Toplam Stok Değeri</p>
     </div>
     <div class="row">
-      <!-- GLOBAL TOPLAM DEĞER -->
-      <h4>₺<%= totalValue.toLocaleString() %></h4>
+      <h4>₺<%= (totalValue || 0).toLocaleString("tr-TR") %></h4>
     </div>
     <div class="row">
-      <div class="trend-bar success">
-        <span class="bxr bx-arrow-up-stroke"></span>%8.5 bu hafta
+      <% const valRate = trends && typeof trends.valueRate === 'number'
+          ? trends.valueRate
+          : 0; %>
+      <div
+        class="trend-bar <%= valRate >= 0 ? 'success' : 'danger' %>"
+      >
+        <span
+          class="bxr bx-arrow-<%= valRate >= 0 ? 'up-stroke' : 'down-stroke' %>"
+        ></span>
+        <%= (valRate >= 0 ? '+' : '') + valRate.toFixed(1) %>% bu hafta
       </div>
     </div>
   </div>
 </div>
+
       <!-- Tabs + Search -->
       <div class="category-tabs-container">
         <div class="ct-tab-buttons">
